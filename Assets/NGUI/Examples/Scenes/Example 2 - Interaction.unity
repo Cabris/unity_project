@@ -4,12 +4,13 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
+  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
-    smallestHole: .25
-    backfaceThreshold: 100
+    viewCellSize: 1
+    bakeMode: 2
+    memoryUsage: 10485760
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -22,7 +23,6 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
-  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -918,7 +918,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
-  m_OcclusionCulling: 1
 --- !u!23 &64
 Renderer:
   m_ObjectHideFlags: 0
@@ -937,9 +936,6 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!23 &65
 Renderer:
   m_ObjectHideFlags: 0
@@ -958,9 +954,6 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!33 &66
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1117,6 +1110,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &78
 Animation:
   m_ObjectHideFlags: 0
@@ -1132,6 +1128,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!124 &79
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1150,16 +1149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 15
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4e475549
+  mSpriteName: NGUI
 --- !u!114 &81
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,8 +1172,10 @@ MonoBehaviour:
   trigger: 1
   playDirection: 1
   resetOnPlay: 0
+  clearSelection: 0
   ifDisabledOnPlay: 0
   disableWhenFinished: 0
+  eventReceiver: {fileID: 0}
   callWhenFinished: 
 --- !u!114 &82
 MonoBehaviour:
@@ -1195,8 +1193,10 @@ MonoBehaviour:
   trigger: 1
   playDirection: 1
   resetOnPlay: 0
+  clearSelection: 0
   ifDisabledOnPlay: 0
   disableWhenFinished: 0
+  eventReceiver: {fileID: 0}
   callWhenFinished: 
 --- !u!114 &83
 MonoBehaviour:
@@ -1217,6 +1217,8 @@ MonoBehaviour:
   ifDisabledOnPlay: 0
   disableWhenFinished: 0
   includeChildren: 0
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
 --- !u!114 &84
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,6 +1238,8 @@ MonoBehaviour:
   ifDisabledOnPlay: 1
   disableWhenFinished: 0
   includeChildren: 0
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
 --- !u!114 &85
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,6 +1253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   method: 3
   style: 0
+  ignoreTimeScale: 1
+  delay: 0
   duration: .5
   steeperCurves: 0
   tweenGroup: 0
@@ -1256,6 +1262,7 @@ MonoBehaviour:
   callWhenFinished: 
   from: {fileID: 39}
   to: {fileID: 38}
+  parentWhenFinished: 0
 --- !u!114 &86
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,16 +1274,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: .0608153269
-    g: .126825124
-    b: .291044772
-    a: .847058833
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .0608153269, g: .126825124, b: .291044772, a: .847058833}
   mPivot: 4
   mDepth: 5
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 427574746f6e
+  mSpriteName: Button
   mFillCenter: 1
 --- !u!114 &87
 MonoBehaviour:
@@ -1289,28 +1293,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 6
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 48696465
+  mText: Hide
   mMaxLineWidth: 0
   mEncoding: 1
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &88
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,6 +1325,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &89
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,6 +1345,8 @@ MonoBehaviour:
   ifDisabledOnPlay: 0
   disableWhenFinished: -1
   includeChildren: 1
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
 --- !u!114 &90
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,16 +1359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 11}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: .858823538
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: .858823538
+  hover: {r: .600000024, g: 1, b: .200000003, a: .858823538}
+  pressed: {r: .5, g: .5, b: .5, a: .858823538}
   duration: .200000003
 --- !u!114 &91
 MonoBehaviour:
@@ -1379,16 +1374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 23}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: .858823538
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: .858823538
+  hover: {r: .600000024, g: 1, b: .200000003, a: .858823538}
+  pressed: {r: .5, g: .5, b: .5, a: .858823538}
   duration: .200000003
 --- !u!114 &92
 MonoBehaviour:
@@ -1409,6 +1396,8 @@ MonoBehaviour:
   ifDisabledOnPlay: 1
   disableWhenFinished: 0
   includeChildren: 1
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
 --- !u!114 &93
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1422,6 +1411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   method: 3
   style: 0
+  ignoreTimeScale: 1
+  delay: 0
   duration: .5
   steeperCurves: 0
   tweenGroup: 0
@@ -1442,6 +1433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   method: 3
   style: 0
+  ignoreTimeScale: 1
+  delay: 0
   duration: .5
   steeperCurves: 0
   tweenGroup: 0
@@ -1490,16 +1483,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: -5
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 427574746f6e
+  mSpriteName: Button
 --- !u!114 &98
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,6 +1541,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,28 +1553,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 6
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 53686f77
+  mText: Show
   mMaxLineWidth: 0
   mEncoding: 1
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,16 +1582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: .0627451017
-    g: .125490203
-    b: .290196091
-    a: .847058833
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .0627451017, g: .125490203, b: .290196091, a: .847058833}
   mPivot: 4
   mDepth: 5
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 427574746f6e
+  mSpriteName: Button
   mFillCenter: 1
 --- !u!114 &104
 MonoBehaviour:
@@ -1617,16 +1601,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f3996954ef684696c03244a67ace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: .0447761416
-    g: .0447761416
-    b: .0447761416
-    a: .627451003
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .0447761416, g: .0447761416, b: .0447761416, a: .627451003}
   mPivot: 4
   mDepth: 4
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 486f6e6579636f6d62
+  mSpriteName: Honeycomb
   mFillCenter: 1
 --- !u!114 &105
 MonoBehaviour:
@@ -1639,28 +1620,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 0
   mDepth: 10
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 54686973206578616d706c652073686f7773207468617420796f75722055492063616e2073696d706c7920626520612070617274206f6620796f7572203344207363656e6520696620796f7520736f206465736972652c20616e6420616e79206f626a6563742077697468206120636f6c6c696465722069732063617061626c65206f6620726563656976696e6720616e642068616e646c696e6720746865206576656e74732e0a0a596f752063616e20616c736f2075736520746865205b4646393933335d5549427574746f6e547765656e5b2d5d2073637269707420746f20616374697661746520547765656e2073637269707473206c6f6361746564206f6e2072656d6f7465206f626a656374732c206d616b696e67207468656d20666c7920696e2c206661646520696e2c206f7220616e797468696e6720656c736520796f75206d61792077616e7420776974686f757420686176696e6720746f20636f646520616e797468696e672e204f7220626574746572207965742c20747269676765722072656d6f746520616e696d6174696f6e732077697468205b4646393933335d5549427574746f6e506c6179416e696d6174696f6e5b2d5d2e0a0a496620796f7520646f2064656369646520746f2064696720696e746f2074686520636f646520686f77657665722c20746865206576656e74207363726970747320617265207472697669616c6c792073686f72742e20466f72206578616d706c652c20612073696d706c65204d6f6e6f4265686176696f75722077697468205b4646393933335d766f6964204f6e436c69636b28295b2d5d2066756e6374696f6e20696e206974206c65747320796f7520646f20736f6d657468696e67207768656e20746865206f626a656374206765747320636c69636b6564206f6e2e
+  mText: 'This example shows that your UI can simply be a part of your 3D scene if
+    you so desire, and any object with a collider is capable of receiving and handling
+    the events.
+
+
+    You can also use the [FF9933]UIButtonTween[-] script to activate Tween scripts
+    located on remote objects, making them fly in, fade in, or anything else you may
+    want without having to code anything. Or better yet, trigger remote animations
+    with [FF9933]UIButtonPlayAnimation[-].
+
+
+    If you do decide to dig into the code however, the event scripts are trivially
+    short. For example, a simple MonoBehaviour with [FF9933]void OnClick()[-] function
+    in it lets you do something when the object gets clicked on.'
   mMaxLineWidth: 460
   mEncoding: 1
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,28 +1662,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 4578616d706c6520313a20496e746572616374696f6e
+  mText: 'Example 1: Interaction'
   mMaxLineWidth: 0
   mEncoding: 1
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1705,16 +1691,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: .919841349
-    b: .641791046
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: .919841349, b: .641791046, a: 1}
   mPivot: 4
   mDepth: -1
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4c69676874
+  mSpriteName: Light
   mFillCenter: 1
 --- !u!114 &108
 MonoBehaviour:
@@ -1727,16 +1710,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: .783582091
-    g: .759373724
-    b: .736801088
-    a: .909803927
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .783582091, g: .759373724, b: .736801088, a: .909803927}
   mPivot: 4
   mDepth: -2
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &109
 MonoBehaviour:
@@ -1749,16 +1729,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 0
-    g: .328671694
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 0, g: .328671694, b: 1, a: 1}
   mPivot: 4
   mDepth: 12
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
 --- !u!114 &110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1770,16 +1747,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 0
-    g: 1
-    b: .0769231319
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 0, g: 1, b: .0769231319, a: 1}
   mPivot: 4
   mDepth: 13
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
 --- !u!114 &111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,16 +1765,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 0
-    b: 0
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 0, b: 0, a: 1}
   mPivot: 4
   mDepth: 14
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
 --- !u!114 &112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,14 +1785,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useMouse: 1
   useTouch: 1
+  allowMultiTouch: 1
   useKeyboard: 1
   useController: 1
-  eventReceiverMask: {}
+  eventReceiverMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   tooltipDelay: 1
+  stickyTooltip: 1
+  mouseDragThreshold: 4
   mouseClickThreshold: 10
+  touchDragThreshold: 40
   touchClickThreshold: 40
   rangeDistance: -1
-  scrollAxisName: 4d6f757365205363726f6c6c576865656c
+  scrollAxisName: Mouse ScrollWheel
+  verticalAxisName: Vertical
+  horizontalAxisName: Horizontal
+  submitKey0: 13
+  submitKey1: 330
+  cancelKey0: 27
+  cancelKey1: 331
 --- !u!114 &113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,6 +1819,7 @@ MonoBehaviour:
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
+  widgetsAreStatic: 0
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}

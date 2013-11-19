@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2539bbb4f03424ca1e61b0436cf5d1, type: 3}
+  m_Name: Uni2D_AssetTable
+  m_EditorClassIdentifier: 
+  m_oAtlasPathGUIDEntries: []
+  m_oClipPathGUIDEntries: []
+  m_oTextureGUIDAtlasEntries: []
+  m_oTextureGUIDClipEntries: []
+  m_oTextureGUIDSpritePrefabEntries:
+  - key: da9029a076ec4834e99ae4e75a1f982c
+    genericValue:
+    - cb059fc814cb7fd48800182393733b74
+  - key: 3447d794b00955e45a1fd148e565433d
+    genericValue:
+    - cb059fc814cb7fd48800182393733b74
+  - key: 2827c4e88a2525345823af576ea6a059
+    genericValue:
+    - ce39e2db458f2ba449dbf17128136c47
+  m_oAtlasGUIDSpritePrefabEntries: []

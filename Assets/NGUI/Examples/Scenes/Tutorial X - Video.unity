@@ -4,12 +4,13 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
+  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
-    smallestHole: .25
-    backfaceThreshold: 100
+    viewCellSize: 1
+    bakeMode: 2
+    memoryUsage: 10485760
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -22,7 +23,6 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
-  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -1381,7 +1381,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
-  m_OcclusionCulling: 1
 --- !u!65 &96
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1524,6 +1523,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &108
 Animation:
   m_ObjectHideFlags: 0
@@ -1539,6 +1541,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &109
 Animation:
   m_ObjectHideFlags: 0
@@ -1554,6 +1559,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &110
 Animation:
   m_ObjectHideFlags: 0
@@ -1569,6 +1577,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &111
 Animation:
   m_ObjectHideFlags: 0
@@ -1584,6 +1595,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &112
 Animation:
   m_ObjectHideFlags: 0
@@ -1599,6 +1613,9 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,8 +1629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 91}
   scale: {x: 1, y: 1, z: 0}
+  scrollWheelFactor: 0
   restrictWithinPanel: 0
   dragEffect: 0
+  momentumAmount: 35
 --- !u!114 &114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,8 +1646,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   method: 3
   style: 2
+  ignoreTimeScale: 1
+  delay: 0
   duration: 1
+  steeperCurves: 0
   tweenGroup: 0
+  eventReceiver: {fileID: 0}
   callWhenFinished: 
   from: {x: 0, y: 0, z: 0}
   to: {x: 0, y: 0, z: -30}
@@ -1645,8 +1668,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   label: {fileID: 0}
   maxChars: 0
-  caratChar: 7c
-  playerPrefsField: 536f6d65
+  caratChar: '|'
+  type: 0
+  isPassword: 0
+  activeColor: {r: 1, g: 1, b: 1, a: 1}
+  eventReceiver: {fileID: 0}
+  functionName: OnSubmit
+  playerPrefsField: Some
 --- !u!114 &116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,21 +1686,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 13
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 4e6577204c6162656c
+  mText: New Label
+  mMaxLineWidth: 0
   mEncoding: 0
-  mLineWidth: 0
-  mMultiline: 0
+  mMaxLineCount: 0
   mPassword: 1
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 0
 --- !u!114 &117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,21 +1715,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 12
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 537461727420747970696e6720736f6d657468696e67206c696b652074686973
+  mText: Start typing something like this
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 100
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 100
+  mMultiline: 1
 --- !u!114 &118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1747,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,16 +1775,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 12}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &121
 MonoBehaviour:
@@ -1764,9 +1791,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkSprite: {fileID: 0}
   checkAnimation: {fileID: 107}
-  eventReceiver: {fileID: 0}
-  functionName: 4f6e4163746976617465
   startsChecked: 0
+  radioButtonRoot: {fileID: 0}
+  optionCanBeNone: 0
+  eventReceiver: {fileID: 0}
+  functionName: OnActivate
   option: 1
 --- !u!114 &122
 MonoBehaviour:
@@ -1779,21 +1808,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 11
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 436865636b626f78
+  mText: Checkbox
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,16 +1837,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 58
+  mSpriteName: X
 --- !u!114 &124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,16 +1855,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 9
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &125
 MonoBehaviour:
@@ -1851,6 +1877,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,16 +1905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 17}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &128
 MonoBehaviour:
@@ -1902,9 +1921,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkSprite: {fileID: 0}
   checkAnimation: {fileID: 108}
-  eventReceiver: {fileID: 0}
-  functionName: 4f6e4163746976617465
   startsChecked: 0
+  radioButtonRoot: {fileID: 0}
+  optionCanBeNone: 0
+  eventReceiver: {fileID: 0}
+  functionName: OnActivate
   option: 1
 --- !u!114 &129
 MonoBehaviour:
@@ -1917,21 +1938,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 11
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 436865636b626f78
+  mText: Checkbox
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,16 +1967,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 58
+  mSpriteName: X
 --- !u!114 &131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,16 +1985,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 9
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &132
 MonoBehaviour:
@@ -1986,16 +2004,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 9
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &133
 MonoBehaviour:
@@ -2008,16 +2023,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 58
+  mSpriteName: X
 --- !u!114 &134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,21 +2041,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 11
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 436865636b626f78
+  mText: Checkbox
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,9 +2072,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkSprite: {fileID: 0}
   checkAnimation: {fileID: 109}
-  eventReceiver: {fileID: 0}
-  functionName: 4f6e4163746976617465
   startsChecked: 0
+  radioButtonRoot: {fileID: 0}
+  optionCanBeNone: 0
+  eventReceiver: {fileID: 0}
+  functionName: OnActivate
   option: 1
 --- !u!114 &136
 MonoBehaviour:
@@ -2073,16 +2090,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 20}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &137
 MonoBehaviour:
@@ -2113,6 +2122,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,16 +2134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 9
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &140
 MonoBehaviour:
@@ -2146,16 +2153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 58
+  mSpriteName: X
 --- !u!114 &141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2167,21 +2171,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 11
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 436865636b626f78
+  mText: Checkbox
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2195,9 +2202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkSprite: {fileID: 0}
   checkAnimation: {fileID: 110}
-  eventReceiver: {fileID: 0}
-  functionName: 4f6e4163746976617465
   startsChecked: 0
+  radioButtonRoot: {fileID: 0}
+  optionCanBeNone: 0
+  eventReceiver: {fileID: 0}
+  functionName: OnActivate
   option: 1
 --- !u!114 &143
 MonoBehaviour:
@@ -2211,16 +2220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 25}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &144
 MonoBehaviour:
@@ -2251,6 +2252,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,8 +2268,11 @@ MonoBehaviour:
   clipName: 
   trigger: 1
   playDirection: 1
+  resetOnPlay: 0
+  clearSelection: 0
   ifDisabledOnPlay: 0
   disableWhenFinished: 0
+  eventReceiver: {fileID: 0}
   callWhenFinished: 
 --- !u!114 &147
 MonoBehaviour:
@@ -2283,6 +2288,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: cab912f3009b43843b0a48ac3120c6ad, type: 3}
   trigger: 1
   volume: 1
+  pitch: 1
 --- !u!114 &148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,6 +2303,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,16 +2331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 33}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &151
 MonoBehaviour:
@@ -2348,9 +2347,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkSprite: {fileID: 0}
   checkAnimation: {fileID: 112}
-  eventReceiver: {fileID: 0}
-  functionName: 4f6e4163746976617465
   startsChecked: 0
+  radioButtonRoot: {fileID: 0}
+  optionCanBeNone: 0
+  eventReceiver: {fileID: 0}
+  functionName: OnActivate
   option: 1
 --- !u!114 &152
 MonoBehaviour:
@@ -2363,21 +2364,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 11
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 436865636b626f78
+  mText: Checkbox
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,16 +2393,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 10
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 58
+  mSpriteName: X
 --- !u!114 &154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,16 +2411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 9
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &155
 MonoBehaviour:
@@ -2432,21 +2430,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 8
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 57696e646f77205b4646303030305d54657874
+  mText: Window [FF0000]Text
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,16 +2475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 0}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &158
 MonoBehaviour:
@@ -2496,16 +2489,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 7
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 486967686c69676874
+  mSpriteName: Highlight
   mFillCenter: 1
 --- !u!114 &159
 MonoBehaviour:
@@ -2521,9 +2511,11 @@ MonoBehaviour:
   foreground: {fileID: 82}
   thumb: {fileID: 81}
   direction: 0
-  initialValue: 1
+  fullSize: {x: 0, y: 0}
   eventReceiver: {fileID: 0}
-  functionName: 4f6e536c696465724368616e6765
+  functionName: OnSliderChange
+  numberOfSteps: 0
+  rawValue: 1
 --- !u!114 &160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,16 +2527,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: .440559387
-    b: 0
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: .440559387, b: 0, a: 1}
   mPivot: 3
   mDepth: 6
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4c69676874
+  mSpriteName: Light
   mFillCenter: 1
 --- !u!114 &161
 MonoBehaviour:
@@ -2557,16 +2546,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 3
   mDepth: 5
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &162
 MonoBehaviour:
@@ -2582,6 +2568,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b5083cfe83bb875479bd797c61594131, type: 3}
   trigger: 0
   volume: 1
+  pitch: 1
 --- !u!114 &163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,16 +2611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 41}
-  hover:
-    r: .600000024
-    g: 1
-    b: .200000003
-    a: 1
-  pressed:
-    r: .5
-    g: .5
-    b: .5
-    a: 1
+  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
 --- !u!114 &166
 MonoBehaviour:
@@ -2646,21 +2625,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 4
   mFont: {fileID: 11400000, guid: ac44b8a25154a9d40a172ab5851e0986, type: 2}
-  mText: 427574746f6e
+  mText: Button
+  mMaxLineWidth: 0
   mEncoding: 1
-  mLineWidth: 0
-  mMultiline: 1
+  mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!114 &167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,16 +2654,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 0
-    g: .538461685
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 0, g: .538461685, b: 1, a: 1}
   mPivot: 4
   mDepth: 3
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 427574746f6e
+  mSpriteName: Button
   mFillCenter: 1
 --- !u!114 &168
 MonoBehaviour:
@@ -2694,16 +2673,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: .514664412
-    g: 1
-    b: .305970132
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .514664412, g: 1, b: .305970132, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4c69676874
+  mSpriteName: Light
   mFillCenter: 1
 --- !u!114 &169
 MonoBehaviour:
@@ -2716,16 +2692,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f3996954ef684696c03244a67ace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
   mDepth: 1
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 486f6e6579636f6d62
+  mSpriteName: Honeycomb
+  mFillCenter: 1
 --- !u!114 &170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,16 +2711,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: d650d98b3c4028a4a8b7225c1a6482f8, type: 2}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: 4461726b
+  mSpriteName: Dark
   mFillCenter: 1
 --- !u!114 &171
 MonoBehaviour:
@@ -2759,7 +2730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae942c9068183dc40a9d01f648273726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showInPanelTool: 1
   generateNormals: 0
+  depthPass: 0
+  widgetsAreStatic: 0
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -2776,10 +2750,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCamera: {fileID: 95}
+  widgetContainer: {fileID: 0}
+  panelContainer: {fileID: 0}
   side: 8
   halfPixelOffset: 1
-  stretchToFill: 0
   depthOffset: 0
+  relativeOffset: {x: 0, y: 0}
 --- !u!114 &173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,7 +2767,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a92b5d748695fd44aac9feef17ba415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useMouse: 1
+  useTouch: 1
+  allowMultiTouch: 1
+  useKeyboard: 1
+  useController: 1
+  eventReceiverMask:
+    serializedVersion: 2
+    m_Bits: 1
   tooltipDelay: 1
+  stickyTooltip: 1
+  mouseDragThreshold: 4
+  mouseClickThreshold: 10
+  touchDragThreshold: 40
+  touchClickThreshold: 40
+  rangeDistance: -1
+  scrollAxisName: Mouse ScrollWheel
+  verticalAxisName: Vertical
+  horizontalAxisName: Horizontal
+  submitKey0: 13
+  submitKey1: 330
+  cancelKey0: 27
+  cancelKey1: 331
 --- !u!114 &174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,6 +2802,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   automatic: 1
   manualHeight: 594
+  minimumHeight: 320
+  maximumHeight: 1080
 --- !u!196 &175
 NavMeshSettings:
   m_ObjectHideFlags: 0
