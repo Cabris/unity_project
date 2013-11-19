@@ -15,14 +15,5 @@ MonoBehaviour:
   m_oClipPathGUIDEntries: []
   m_oTextureGUIDAtlasEntries: []
   m_oTextureGUIDClipEntries: []
-  m_oTextureGUIDSpritePrefabEntries:
-  - key: da9029a076ec4834e99ae4e75a1f982c
-    genericValue:
-    - cb059fc814cb7fd48800182393733b74
-  - key: 3447d794b00955e45a1fd148e565433d
-    genericValue:
-    - cb059fc814cb7fd48800182393733b74
-  - key: 2827c4e88a2525345823af576ea6a059
-    genericValue:
-    - ce39e2db458f2ba449dbf17128136c47
+  m_oTextureGUIDSpritePrefabEntries: []
   m_oAtlasGUIDSpritePrefabEntries: []
