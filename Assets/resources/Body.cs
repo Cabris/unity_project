@@ -13,7 +13,12 @@ public class Body : MonoBehaviour
 	float spring;
 	[SerializeField]
 	float damper;
-	
+//	[SerializeField]
+//	float damper;
+//	[SerializeField]
+//	float damper;
+//	[SerializeField]
+//	float damper;
 	
 	// Use this for initialization
 	void Start ()
