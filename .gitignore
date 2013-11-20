@@ -14,9 +14,9 @@
 #
 
 # OS X only (not needed on other platforms)
-.DS_Store
-*.swp
-*.Trashes
+#.DS_Store
+#*.swp
+#*.Trashes
 
 # All platforms
 Library
