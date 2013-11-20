@@ -1185,6 +1185,9 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+  m_UserAABB:
+    m_Center: {x: -.00260972977, y: .868843436, z: -.098190397}
+    m_Extent: {x: .494616568, y: .876331925, z: .284962326}
 --- !u!1002 &11100001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -1274,6 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  speed: 1
 --- !u!1002 &11400011
 EditorExtensionImpl:
   serializedVersion: 6
@@ -1370,9 +1374,6 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1397,7 +1398,6 @@ SkinnedMeshRenderer:
   - {fileID: 400006}
   - {fileID: 400032}
   - {fileID: 400034}
-  m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: -.0584264398, y: .107545763, z: -.00636123121}

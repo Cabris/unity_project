@@ -4,12 +4,13 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
+  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
-    smallestHole: .25
-    backfaceThreshold: 100
+    viewCellSize: 1
+    bakeMode: 2
+    memoryUsage: 10485760
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -22,7 +23,6 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
-  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -1285,7 +1285,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
-  m_OcclusionCulling: 1
 --- !u!81 &92
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1335,17 +1334,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f3996954ef684696c03244a67ace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: .172549024
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: .172549024}
   mPivot: 0
   mDepth: -10
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 4f72632041726d6f72202d20426f6f7473
+  mSpriteName: Orc Armor - Boots
   mFillCenter: 1
 --- !u!114 &96
 MonoBehaviour:
@@ -1376,17 +1371,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &98
 MonoBehaviour:
@@ -1399,28 +1390,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 5269676874
+  mText: Right
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1472,28 +1455,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 4c656674
+  mText: Left
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1509,17 +1484,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &103
 MonoBehaviour:
@@ -1532,17 +1503,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &104
 MonoBehaviour:
@@ -1555,28 +1522,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 426f74746f6d
+  mText: Bottom
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1628,28 +1587,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 546f70
+  mText: Top
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1665,17 +1616,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &109
 MonoBehaviour:
@@ -1688,17 +1635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &110
 MonoBehaviour:
@@ -1711,28 +1654,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 426f74746f6d204c656674
+  mText: Bottom Left
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1784,28 +1719,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 546f70204c656674
+  mText: Top Left
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1821,17 +1748,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &115
 MonoBehaviour:
@@ -1844,17 +1767,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &116
 MonoBehaviour:
@@ -1867,28 +1786,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 546f70205269676874
+  mText: Top Right
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -1963,7 +1874,9 @@ MonoBehaviour:
   allowMultiTouch: 1
   useKeyboard: 1
   useController: 1
-  eventReceiverMask: {}
+  eventReceiverMask:
+    serializedVersion: 2
+    m_Bits: 256
   tooltipDelay: 1
   stickyTooltip: 1
   mouseDragThreshold: 4
@@ -1971,9 +1884,9 @@ MonoBehaviour:
   touchDragThreshold: 40
   touchClickThreshold: 40
   rangeDistance: -1
-  scrollAxisName: 4d6f757365205363726f6c6c576865656c
-  verticalAxisName: 566572746963616c
-  horizontalAxisName: 486f72697a6f6e74616c
+  scrollAxisName: Mouse ScrollWheel
+  verticalAxisName: Vertical
+  horizontalAxisName: Horizontal
   submitKey0: 13
   submitKey1: 330
   cancelKey0: 27
@@ -1989,17 +1902,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: -5
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 57696e646f77
+  mSpriteName: Window
   mFillCenter: 1
 --- !u!114 &122
 MonoBehaviour:
@@ -2012,17 +1921,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: -2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 57696e646f77
+  mSpriteName: Window
   mFillCenter: 1
 --- !u!114 &123
 MonoBehaviour:
@@ -2035,28 +1940,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .679052293
-    b: .0820895433
-    a: 1
+  mColor: {r: 1, g: .679052293, b: .0820895433, a: 1}
   mPivot: 4
   mDepth: -1
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 414e43484f52204558414d504c45
+  mText: ANCHOR EXAMPLE
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -2072,17 +1969,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f3996954ef684696c03244a67ace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: -4
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 5061706572204261636b67726f756e64
+  mSpriteName: Paper Background
   mFillCenter: 1
 --- !u!114 &125
 MonoBehaviour:
@@ -2095,28 +1988,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: .358208954
-    g: .299585462
-    b: .208509684
-    a: 1
+  mColor: {r: .358208954, g: .299585462, b: .208509684, a: 1}
   mPivot: 0
   mDepth: -1
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 54686973206578616d706c652073686f777320626f74682075736573206f66205b3636393946465d5549416e63686f725b2d5d207363726970743a0d0a0d0a5b3636393946465d312e5b2d5d20416c69676e207769646765747320746f2074686520636f726e65727320616e64207369646573206f66207468652073637265656e2e2054686973206c65747320796f7520617474616368207769646765747320746f207468652072696768742073706f74206f6e207468652073637265656e206576656e206966207468652073637265656e2061737065637420726174696f206368616e6765732e0d0a5b3636393946465d322e5b2d5d204175746f6d61746963616c6c79206170706c7920612068616c662d706978656c206f6666736574206f6e2057696e646f7773206d616368696e65732c206d616b696e6720746865205549206c6f6f6b2063726973702e0d0a0d0a5b3636393946465d5549526f6f745b2d5d2073637269707420697320616c736f207573656420696e2074686973206578616d706c652e20205768656e20617474616368656420746f2074686520726f6f74206f626a656374206f66207468652055492c2069742077696c6c207363616c652074686174206f626a6563742062792074686520696e7665727365206f66207468652073637265656e2773206865696768742c2074687573206d61696e7461696e696e672061203120706978656c203d203120756e697420726174696f2c20656e737572696e6720706978656c2d70657266656374205549732e0a0a496620796f752077616e7420796f757220554920746f206b656570207468652073616d652073697a652070726f706f7274696f6e616c20746f207468652073637265656e27732068656967687420696e73746561642c2073656c65637420746865205b3636393946465d5549526f6f745b2d5d20616e64206368616e676520697420746f207573652061206d616e75616c2068656967687420696e73746561642c2073657474696e6720697420746f206265207468652073637265656e20686569676874206f6620796f757220746172676574206465766963652e0a0a5b3636393946465d5549537472657463685b2d5d207363726970742069732075736564206f6e20746865206261636b67726f756e642074696c65642073707269746520746f206d616b652069742066696c6c207468652073637265656e2e0a0a5472792068697474696e6720506c617920616e6420726573697a696e67207468652077696e646f772e
+  mText: "This example shows both uses of [6699FF]UIAnchor[-] script:\r\n\r\n[6699FF]1.[-]
+    Align widgets to the corners and sides of the screen. This lets you attach widgets
+    to the right spot on the screen even if the screen aspect ratio changes.\r\n[6699FF]2.[-]
+    Automatically apply a half-pixel offset on Windows machines, making the UI look
+    crisp.\r\n\r\n[6699FF]UIRoot[-] script is also used in this example.  When attached
+    to the root object of the UI, it will scale that object by the inverse of the
+    screen's height, thus maintaining a 1 pixel = 1 unit ratio, ensuring pixel-perfect
+    UIs.\n\nIf you want your UI to keep the same size proportional to the screen's
+    height instead, select the [6699FF]UIRoot[-] and change it to use a manual height
+    instead, setting it to be the screen height of your target device.\n\n[6699FF]UIStretch[-]
+    script is used on the background tiled sprite to make it fill the screen.\n\nTry
+    hitting Play and resizing the window."
   mMaxLineWidth: 700
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 0}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -2132,28 +2028,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
+  mMat: {fileID: 0}
   mTex: {fileID: 0}
-  mColor:
-    r: 1
-    g: .566433549
-    b: 0
-    a: 1
+  mColor: {r: 1, g: .566433549, b: 0, a: 1}
   mPivot: 4
   mDepth: 3
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 426f74746f6d205269676874
+  mText: Bottom Right
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
   mShowLastChar: 0
   mEffectStyle: 0
-  mEffectColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mLineWidth: 0
@@ -2169,17 +2057,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33c6354b54fb847b16b36e1391868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: e7ef61ebb5c25394c8706a7ea658349f, type: 2}
-  mTex: {fileID: 2800000, guid: da323e2b403b83f48a9c5bc9e05ec0cd, type: 3}
-  mColor:
-    r: .410447776
-    g: .410447776
-    b: .410447776
-    a: 1
+  mMat: {fileID: 0}
+  mTex: {fileID: 0}
+  mColor: {r: .410447776, g: .410447776, b: .410447776, a: 1}
   mPivot: 4
   mDepth: 2
   mAtlas: {fileID: 11400000, guid: f95e07e3d350bf748b0c42b453a69d2e, type: 2}
-  mSpriteName: 427269676874
+  mSpriteName: Bright
   mFillCenter: 1
 --- !u!114 &128
 MonoBehaviour:

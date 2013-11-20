@@ -9,7 +9,6 @@ Material:
   m_Name: Orc Armor
   m_Shader: {fileID: 4800000, guid: ed64773f587bb9846918065b72c58283, type: 3}
   m_ShaderKeywords: []
-  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
