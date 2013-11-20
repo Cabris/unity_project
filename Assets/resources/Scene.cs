@@ -8,10 +8,13 @@ public class Scene : MonoBehaviour
 	Wall wall;
 	[SerializeField]
 	Body aBody;
+	[SerializeField]
+	MyTouch restartButton;
 	// Use this for initialization
 	void Start ()
 	{
 		wall.OnWallDown += this.onWallDown;
+		restartButton.OnMouseDownEvent+=this.onRestart;
 	}
 	
 	void onWallDown (Vector3 pos)
@@ -27,6 +30,10 @@ public class Scene : MonoBehaviour
 			if (hit.collider.tag == "wall")
 				aBody.HandGoTo (hit.point);
 		}
+	}
+	
+	void onRestart(){
+		aBody.ReleaseHandLock();
 	}
 	
 	// Update is called once per frame

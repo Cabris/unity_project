@@ -52,4 +52,16 @@ public class Body : MonoBehaviour
 		}
 	}
 	
+	public void ReleaseHandLock(){
+		for (int i=0; i<hands.Length; i++) {
+			Hand h = hands [i];
+			releaseHandLock(h);
+		}
+	}
+	
+	void releaseHandLock(Hand h){
+		h.FreeHand();
+	}
+	
+	
 }

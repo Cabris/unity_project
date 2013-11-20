@@ -59,6 +59,9 @@ public class Hand : MonoBehaviour
 		rigidbody.constraints = free;
 		isLock = false;
 		transform.parent=bodyT;
+		Vector3 pos=transform.localPosition;
+		pos.x=0;pos.y=0;
+		transform.localPosition=pos;
 	}
 	
 	public void SetSpring (float spring)
