@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour
 	Color32 linkColor, freeColor;
 	bool isLock;
 	Transform bodyT;
+	public bool IsLink{ get; set; }
 	// Use this for initialization
 	void Start ()
 	{
@@ -73,8 +74,6 @@ public class Hand : MonoBehaviour
 	{
 		this.damper = damper;
 	}
-	
-	public bool IsLink{ get; set; }
 	
 	void OnMouseDown ()
 	{

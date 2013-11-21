@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Scene : MonoBehaviour
 {
-	
+	Camera cam;
 	[SerializeField]
 	Wall wall;
 	[SerializeField]
@@ -13,8 +13,9 @@ public class Scene : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		wall.OnWallDown += this.onWallDown;
+		//wall.OnWallDown += this.onWallDown;
 		restartButton.OnMouseDownEvent+=this.onRestart;
+		cam = Camera.main;
 	}
 	
 	void onWallDown (Vector3 pos)
@@ -30,6 +31,12 @@ public class Scene : MonoBehaviour
 			if (hit.collider.tag == "wall")
 				aBody.HandGoTo (hit.point);
 		}
+	}
+	
+	void OnMouseDown ()
+	{
+		Vector3 pos = cam.ScreenToWorldPoint (Input.mousePosition);
+		this.onWallDown(pos);
 	}
 	
 	void onRestart(){
