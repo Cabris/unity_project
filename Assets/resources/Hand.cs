@@ -27,7 +27,6 @@ public class Hand : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
 		if (IsLink) {
 			this.GetComponent<SpringJoint> ().spring = this.spring;
 			this.GetComponent<SpringJoint> ().damper = this.damper;
@@ -63,6 +62,7 @@ public class Hand : MonoBehaviour
 		Vector3 pos=transform.localPosition;
 		pos.x=0;pos.y=0;
 		transform.localPosition=pos;
+		IsLink=true;
 	}
 	
 	public void SetSpring (float spring)
