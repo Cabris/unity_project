@@ -14,7 +14,7 @@ public class Scene : MonoBehaviour
 	void Start ()
 	{
 		//wall.OnWallDown += this.onWallDown;
-		restartButton.OnMouseDownEvent+=this.onRestart;
+		//restartButton.OnMouseDownEvent+=this.onRestart;
 		cam = Camera.main;
 	}
 	
