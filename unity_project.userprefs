@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Game_base_learning_project\Assets\Scripts\LightSource.cs">
+    <Files>
+      <File FileName="..\Game_base_learning_project\Assets\Scripts\Icon.cs" Line="17" Column="20" />
+      <File FileName="..\Game_base_learning_project\Assets\Scripts\LightSource.cs" Line="110" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
