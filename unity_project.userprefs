@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Game_base_learning_project\Assets\Scripts\LightSource.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\resources\Voxel.cs">
     <Files>
-      <File FileName="..\Game_base_learning_project\Assets\Scripts\Icon.cs" Line="17" Column="20" />
-      <File FileName="..\Game_base_learning_project\Assets\Scripts\LightSource.cs" Line="110" Column="12" />
+      <File FileName="Assets\resources\Voxel.cs" Line="7" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

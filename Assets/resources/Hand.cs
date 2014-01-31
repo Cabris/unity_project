@@ -6,7 +6,7 @@ public class Hand : MonoBehaviour
 	float spring;
 	float damper;
 	RigidbodyConstraints free, locked;
-	Uni2DSprite sprite;
+	//Uni2DSprite sprite;
 	Color32 linkColor, freeColor;
 	bool isLock;
 	Transform bodyT;
@@ -16,7 +16,7 @@ public class Hand : MonoBehaviour
 	{
 		free = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
 		locked = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-		sprite = this.GetComponent<Uni2DSprite> ();	
+	//	sprite = this.GetComponent<Uni2DSprite> ();	
 		linkColor = new Color32 (255, 255, 255, 255);
 		freeColor = new Color32 (255, 255, 255, 128);
 		IsLink = true;
@@ -31,15 +31,15 @@ public class Hand : MonoBehaviour
 			this.GetComponent<SpringJoint> ().spring = this.spring;
 			this.GetComponent<SpringJoint> ().damper = this.damper;
 			
-			Color32 c=sprite.VertexColor;
-			c.a=linkColor.a;
-			sprite.VertexColor=c;
+//			Color32 c=sprite.VertexColor;
+//			c.a=linkColor.a;
+//			sprite.VertexColor=c;
 		} else {
 			this.GetComponent<SpringJoint> ().spring = 0;
 			this.GetComponent<SpringJoint> ().damper = 0;
-			Color32 c=sprite.VertexColor;
-			c.a=freeColor.a;
-			sprite.VertexColor=c;
+//			Color32 c=sprite.VertexColor;
+//			c.a=freeColor.a;
+//			sprite.VertexColor=c;
 		}
 	}
 	

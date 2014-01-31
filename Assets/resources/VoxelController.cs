@@ -28,7 +28,8 @@ public class VoxelController : MonoBehaviour
 			Debug.Log("type:"+n["type"].Value);
 			Debug.Log("number:"+n["number"].Value);
 		}
-		
+		foreach(Voxel vox in voxels)
+			vox.vControlor=this;
 		
 	}
 	
