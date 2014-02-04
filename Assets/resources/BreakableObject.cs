@@ -17,8 +17,8 @@ public class BreakableObject : MonoBehaviour {
 	}
 
 	public void Break(Explosion exp,BreakableObject bo){
-		BreakableObject[] bos=BreakableObject.DoDamage(exp,bo);
-		if(bos==null)
+		BreakableObject[] bos=DoDamage(exp,bo);
+		if(bos.Length==0)
 			return;
 		foreach(BreakableObject b in bos){
 			b.Break(exp,bo);
@@ -26,16 +26,15 @@ public class BreakableObject : MonoBehaviour {
 	}
 
 
-	public static BreakableObject[] DoDamage(Explosion exp,BreakableObject bo){
-		BreakableObject[] bos=null;
+	public  BreakableObject[] DoDamage(Explosion exp,BreakableObject bo){
+		BreakableObject[] bos=new BreakableObject[0];
 		Vector2 power=exp.culacPower(bo.transform.position.ToVector2());
 		float m=power.magnitude;
 		if(m >0){
 			bo.durableValue-=m;
 			if(bo.durableValue<=0){
 				GameObject.Destroy(bo.gameObject);
-				bos=new BreakableObject[0];
-			}else
+			}else if(!bo.voxel.breakFlag)
 			{
 				Voxel[] voxs=bo.voxel.Break(2,2);
 				bos=new BreakableObject[voxs.Length];

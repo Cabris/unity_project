@@ -293,6 +293,7 @@ GameObject:
   - 114: {fileID: 589939917}
   - 58: {fileID: 589939916}
   - 50: {fileID: 589939915}
+  - 114: {fileID: 589939920}
   m_Layer: 11
   m_Name: Damage
   m_TagString: Untagged
@@ -339,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bos: []
   button: {fileID: 838018910}
-  maxPower: .0500000007
+  maxPower: 2
 --- !u!212 &589939918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -370,10 +371,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589939914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.399238169, y: -.0260730088, z: 0}
+  m_LocalPosition: {x: -.113535941, y: -.127316862, z: 0}
   m_LocalScale: {x: .301108956, y: .301108986, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &589939920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589939914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0cf100d4ca0dc44bfc4c485984e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &838018910
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vControlor: {fileID: 0}
   button: {fileID: 62209866}
-  b_f: 0
+  maxB: 4
+  breakFlag: 0
 --- !u!212 &1263018503
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,8 +7,12 @@ public class Voxel : MonoBehaviour
 {
 	public VoxelController vControlor;
 	public GameObject button;
-	public int b_f = 0;//0 1 2 3 4
+	 int b_f = 0;//0 1 2 3 4
+public	int maxB=4;
+	public bool breakFlag=false;
 	// Use this for initialization
+
+
 	void Start ()
 	{
 		UIEventListener.Get (button).onClick = ButtonClick;
@@ -34,33 +38,43 @@ public class Voxel : MonoBehaviour
 	
 	public Voxel[] Break (int gridX, int gridY)
 	{
-		
 		List<Voxel> voxels = new List<Voxel> ();
-		if (gridX > 1 && gridY > 1&&b_f<4) {
+		if(breakFlag)
+			return voxels.ToArray();
+		if(b_f>=maxB){
+			DestoryMe();
+			return new Voxel[0];
+		}
+		
+		if (gridX > 1 && gridY > 1&&b_f<maxB) {
 			Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
 			Texture2D tex2D = _sprite.texture;
 			Rect parentRect = _sprite.rect;
 			//int gridX = 2, gridY = 2;
 			Vector2 gridSize = new Vector2 (gridX, gridY);
-			for (int i=0; i<gridY; i++)
-			for (int j=0; j<gridX; j++) {
-				Rect rect = culacRect (parentRect, gridSize, new Vector2 (j, i));
-				Vector2 pivot = new Vector2 (0.5f, 0.5f);
-				Sprite sprite = _sprite;
-				sprite = Sprite.Create (tex2D, rect, pivot);
-				Vector3 pos = culacPos (this.transform, parentRect, gridSize, new Vector2 (j, i));
-				Voxel voxel = CloneMe (sprite);
-				Transform t = voxel.transform;
-				t.position = pos;
-				BoxCollider2D collider2D = voxel.GetComponent<BoxCollider2D> ();
-				Vector2 scale = collider2D.size;
-				scale.x /= gridSize.x;
-				scale.y /= gridSize.y;
-				collider2D.size = scale;
-				t.parent = transform.parent;
-				voxel.b_f = this.b_f + 1;
-				voxels.Add (voxel);
+			for (int i=0; i<gridY; i++){
+				for (int j=0; j<gridX; j++) {
+					Rect rect = culacRect (parentRect, gridSize, new Vector2 (j, i));
+					Vector2 pivot = new Vector2 (0.5f, 0.5f);
+					Sprite sprite = _sprite;
+					sprite = Sprite.Create (tex2D, rect, pivot);
+					Vector3 pos = culacPos (this.transform, parentRect, gridSize, new Vector2 (j, i));
+					Voxel voxel = CloneMe (sprite);
+					Transform t = voxel.transform;
+					t.position = pos;
+					BoxCollider2D collider2D = voxel.GetComponent<BoxCollider2D> ();
+					Vector2 scale = collider2D.size;
+					scale.x /= gridSize.x;
+					scale.y /= gridSize.y;
+					collider2D.size = scale;
+					t.parent = transform.parent;
+					voxel.b_f = this.b_f + 1;
+					
+					//Debug.Log("voxel create with b_f:"+voxel.b_f);
+					voxels.Add (voxel);
+				}
 			}
+			breakFlag=true;
 			DestoryMe ();
 		} else
 			voxels.Add (this);
