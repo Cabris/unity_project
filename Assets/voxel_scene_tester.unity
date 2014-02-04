@@ -293,8 +293,8 @@ GameObject:
   - 114: {fileID: 589939917}
   - 58: {fileID: 589939916}
   - 50: {fileID: 589939915}
-  m_Layer: 0
-  m_Name: Explosion
+  m_Layer: 11
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: 2.77999997
+  m_Radius: .639999986
   m_Center: {x: 0, y: 0}
 --- !u!114 &589939917
 MonoBehaviour:
@@ -337,7 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a8a666db7ef184ab35e6e444b1390c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bos: []
   button: {fileID: 838018910}
+  maxPower: .0500000007
 --- !u!212 &589939918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -368,8 +370,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589939914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .305825174, y: -.185679257, z: 0}
-  m_LocalScale: {x: .0974054784, y: .0974052921, z: 1}
+  m_LocalPosition: {x: -.399238169, y: -.0260730088, z: 0}
+  m_LocalScale: {x: .301108956, y: .301108986, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &838018910
@@ -528,8 +530,8 @@ Camera:
   m_GameObject: {fileID: 1243218283}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: .5, g: .5, b: .5, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: .492647052, g: .191987455, b: .191987455, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -544,7 +546,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -607,7 +609,8 @@ GameObject:
   - 114: {fileID: 1263018502}
   - 61: {fileID: 1263018501}
   - 50: {fileID: 1263018500}
-  m_Layer: 0
+  - 114: {fileID: 1263018505}
+  m_Layer: 10
   m_Name: sprite_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,8 +627,8 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -637,7 +640,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1263018499}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Size: {x: .219999999, y: .200000003}
   m_Center: {x: 0, y: 0}
 --- !u!114 &1263018502
@@ -651,9 +654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d9ac92c93fbf4489e722bbcdfc2864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tex2D: {fileID: 2800000, guid: d097974f5654b544e96d821d9b610349, type: 3}
   vControlor: {fileID: 0}
   button: {fileID: 62209866}
+  b_f: 0
 --- !u!212 &1263018503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -675,7 +678,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300002, guid: d097974f5654b544e96d821d9b610349, type: 3}
+  m_Sprite: {fileID: 21300010, guid: d097974f5654b544e96d821d9b610349, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1263018504
 Transform:
@@ -688,6 +691,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1559156611}
+--- !u!114 &1263018505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263018499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb371ec4905734045b032aba4b4b210c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durableValue: 20
+  voxel: {fileID: 0}
 --- !u!1 &1559156610
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +925,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029025006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.299947381, y: .300000012, z: 0}
+  m_LocalPosition: {x: -.299947411, y: .300000191, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2056470367}

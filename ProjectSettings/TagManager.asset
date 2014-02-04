@@ -15,8 +15,8 @@ TagManager:
   Builtin Layer 7: 
   User Layer 8: wall
   User Layer 9: body
-  User Layer 10: 
-  User Layer 11: 
+  User Layer 10: breakable
+  User Layer 11: damage
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
@@ -37,3 +37,8 @@ TagManager:
   User Layer 29: 
   User Layer 30: 
   User Layer 31: 
+  m_SortingLayers:
+  - name: Default
+    userID: 0
+    uniqueID: 0
+    locked: 0

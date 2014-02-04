@@ -11,7 +11,7 @@ public class VoxelController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		voxels = GetComponentsInChildren<Voxel> ();
+//		voxels = GetComponentsInChildren<Voxel> ();
 		string filename="map.txt";
 		string filepath=Application.dataPath+"/resources/"+filename;
 		StreamReader str=new StreamReader(filepath);
@@ -28,9 +28,9 @@ public class VoxelController : MonoBehaviour
 			Debug.Log("type:"+n["type"].Value);
 			Debug.Log("number:"+n["number"].Value);
 		}
-		foreach(Voxel vox in voxels)
-			vox.vControlor=this;
-		
+//		foreach(Voxel vox in voxels)
+//			vox.vControlor=this;
+//		
 	}
 	
 	// Update is called once per frame
