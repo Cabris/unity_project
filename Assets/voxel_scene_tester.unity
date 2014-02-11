@@ -89,8 +89,8 @@ GameObject:
   - 114: {fileID: 62209868}
   - 114: {fileID: 62209873}
   m_Layer: 0
-  m_Name: Button_break
-  m_TagString: Untagged
+  m_Name: Button_save
+  m_TagString: save
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 62209866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -143.0793, y: -201.744965, z: 0}
+  m_LocalPosition: {x: 297.94397, y: -179.950226, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1954008886}
@@ -335,12 +335,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 589939914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a8a666db7ef184ab35e6e444b1390c, type: 3}
+  m_Script: {fileID: 11500000, guid: aeeac2fe4145fcc458562b04c9244ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bos: []
-  button: {fileID: 838018910}
   maxPower: 2
+  updatePeriod: 0
 --- !u!212 &589939918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -371,8 +371,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589939914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.113535941, y: -.127316862, z: 0}
-  m_LocalScale: {x: .301108956, y: .301108986, z: 1}
+  m_LocalPosition: {x: -.958583534, y: -.0850875974, z: 0}
+  m_LocalScale: {x: .43908897, y: .439089239, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &589939920
@@ -401,8 +401,8 @@ GameObject:
   - 114: {fileID: 838018913}
   - 114: {fileID: 838018912}
   m_Layer: 0
-  m_Name: Button_explos
-  m_TagString: Untagged
+  m_Name: Button_load
+  m_TagString: load
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,7 +414,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838018910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 165.338669, y: -201.745087, z: 0}
+  m_LocalPosition: {x: 298.328094, y: -135.250381, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 362614893}
@@ -653,7 +653,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .219999999, y: .200000003}
+  m_Size: {x: 2.55999994, y: 2.55999994}
   m_Center: {x: 0, y: 0}
 --- !u!114 &1263018502
 MonoBehaviour:
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vControlor: {fileID: 0}
-  button: {fileID: 62209866}
+  b_f: 0
   maxB: 4
   breakFlag: 0
 --- !u!212 &1263018503
@@ -691,7 +691,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300010, guid: d097974f5654b544e96d821d9b610349, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f4c0ef77ae85014da8ae55e3095724d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1263018504
 Transform:
@@ -700,8 +700,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1263018499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -.0463161469, y: .0070862174, z: 0}
+  m_LocalScale: {x: .307022214, y: .307022095, z: 1}
   m_Children: []
   m_Father: {fileID: 1559156611}
 --- !u!114 &1263018505
@@ -726,6 +726,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1559156611}
   - 114: {fileID: 1559156612}
+  - 114: {fileID: 1559156613}
   m_Layer: 0
   m_Name: VoxelController
   m_TagString: Untagged
@@ -757,6 +758,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voxels: []
+--- !u!114 &1559156613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559156610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4686731e1f3464d97753a223cde8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSave: {fileID: 62209866}
+  buttonLoad: {fileID: 838018910}
 --- !u!1 &1738491209
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +815,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 1
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: explose
+  mText: load
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
@@ -836,7 +850,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819473348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 62209867}
@@ -857,7 +871,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 1
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: break
+  mText: save
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
