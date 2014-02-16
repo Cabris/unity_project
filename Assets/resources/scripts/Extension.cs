@@ -37,16 +37,37 @@ public static class Extension
 		return vector3Json;
 	}
 
+	public static JSONNode JsonRect(this JSONNode n,Rect r){
+		JSONData x=new JSONData(r.x);
+		JSONData y=new JSONData(r.y);
+		JSONData width=new JSONData(r.width);
+		JSONData height=new JSONData(r.height);
+		
+		JSONClass rectJson=new JSONClass();
+		rectJson.Add("x",x);
+		rectJson.Add("y",y);
+		rectJson.Add("width",width);
+		rectJson.Add("height",height);
+		//vector3Json.Value=TYPE_VECTOR3;
+		return rectJson;
+	}
+
 	public static Vector3 ToVector3(this JSONNode n){
 		Vector3 v=new Vector3();
-//		if(n.Value!=TYPE_VECTOR3)
-//			throw new Exception();
 		v.x=n["x"].AsFloat;
 		v.y=n["y"].AsFloat;
 		v.z=n["z"].AsFloat;
 		return v;
 	}
 
+	public static Rect ToRect(this JSONNode n){
+		Rect r=new Rect();
+		r.x=n["x"].AsFloat;
+		r.y=n["y"].AsFloat;
+		r.width=n["width"].AsFloat;
+		r.height=n["height"].AsFloat;
+		return r;
+	}
 
 }
 

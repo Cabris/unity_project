@@ -5,14 +5,16 @@ using System.Collections.Generic;
 
 public class Voxel : MonoBehaviour
 {
-	public VoxelController vControlor;
-	public int b_f = 0;//0 1 2 3 4
+	public BreakableObjectController vControlor;
+	public int b_f = 0;//0~maxB
 	public	int maxB = 4;
 	public bool breakFlag = false;
-
+	Vector2 iniSize;
+	
 	// Use this for initialization
 	void Start ()
-	{	
+	{	BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
+		iniSize=collider2D.size;
 	}
 	
 	// Update is called once per frame
@@ -33,29 +35,14 @@ public class Voxel : MonoBehaviour
 		
 		if (gridX > 1 && gridY > 1 && b_f < maxB) {
 			Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
-			Texture2D tex2D = _sprite.texture;
 			Rect parentRect = _sprite.rect;
-			//int gridX = 2, gridY = 2;
+			BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
 			Vector2 gridSize = new Vector2 (gridX, gridY);
 			for (int i=0; i<gridY; i++) {
 				for (int j=0; j<gridX; j++) {
 					Rect rect = culacRect (parentRect, gridSize, new Vector2 (j, i));
-					Vector2 pivot = new Vector2 (0.5f, 0.5f);
-					Sprite sprite = _sprite;
-					sprite = Sprite.Create (tex2D, rect, pivot);
 					Vector3 pos = culacPos (this.transform, parentRect, gridSize, new Vector2 (j, i));
-					Voxel voxel = CloneMe (sprite);
-					Transform t = voxel.transform;
-					t.position = pos;
-					BoxCollider2D collider2D = voxel.GetComponent<BoxCollider2D> ();
-					Vector2 scale = collider2D.size;
-					scale.x /= gridSize.x;
-					scale.y /= gridSize.y;
-					collider2D.size = scale;
-					t.parent = transform.parent;
-					voxel.b_f = this.b_f + 1;
-					
-					//Debug.Log("voxel create with b_f:"+voxel.b_f);
+					Voxel voxel=CloneMe(rect,pos,transform.parent,this.b_f + 1);
 					voxels.Add (voxel);
 				}
 			}
@@ -64,8 +51,32 @@ public class Voxel : MonoBehaviour
 		} else
 			voxels.Add (this);
 		return voxels.ToArray ();
-		//Voxel[][] voxelArray = new Voxel[0][0]();
-		//return voxelArray;
+	}
+
+
+	public Voxel CloneMe (Rect rect,Vector3 pos,Transform parent,int b_f)
+	{
+		Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
+		Texture2D tex2D = _sprite.texture;
+		Vector2 pivot = new Vector2 (0.5f, 0.5f);
+		Sprite sprite  = Sprite.Create (tex2D, rect, pivot);
+		Voxel voxel=CloneMe(sprite);
+		Transform t = voxel.transform;
+		t.position = pos;
+		BoxCollider2D collider2D = voxel.GetComponent<BoxCollider2D> ();
+
+		t.parent = parent;
+		voxel.b_f =b_f;
+		voxel.ResetColliderSizeBySprite();
+		return voxel;
+	}
+	
+	Voxel CloneMe (Sprite s)
+	{
+		GameObject go = GameObject.Instantiate (gameObject) as GameObject;
+		Voxel vox = go.GetComponent<Voxel> ();
+		vox.GetComponent<SpriteRenderer> ().sprite = s;
+		return vox;
 	}
 	
 	Rect culacRect (Rect baseR, Vector2 gridSize, Vector2 index)
@@ -93,53 +104,20 @@ public class Voxel : MonoBehaviour
 		return p;
 	}
 	
-	Voxel CloneMe (Sprite s)
-	{
-		GameObject go = GameObject.Instantiate (gameObject) as GameObject;
-		Voxel vox = go.GetComponent<Voxel> ();
-		vox.GetComponent<SpriteRenderer> ().sprite = s;
-		return vox;
+	public void ResetColliderSizeBySprite(){
+		BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
+		SpriteRenderer sp=GetComponent<SpriteRenderer>();
+		Bounds b=sp.sprite.bounds;
+		Vector3 bs=b.size;
+		Vector2 ls=new Vector2(b.size.x,b.size.y);
+		collider2D.size=ls;
 	}
-	
+
 	public void DestoryMe ()
 	{
 		GameObject.Destroy (gameObject);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }
+

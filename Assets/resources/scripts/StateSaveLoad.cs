@@ -1,45 +1,68 @@
 ﻿using UnityEngine;
+using System;
 using SimpleJSON;
+using System.IO;
+using System.Text;
+using System.Linq;
 using System.Collections;
 
-public class StateSaveLoad : MonoBehaviour {
+public class StateSaveLoad : MonoBehaviour
+{
 	public GameObject buttonSave;
 	public GameObject buttonLoad;
-	public string filename=@"saves\save1.txt";
-	VoxelController vc;
+	public string filename = @"saves\save1.txt";
+	BreakableObjectController vc;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		UIEventListener.Get (buttonSave).onClick += ButtonClick;
 		UIEventListener.Get (buttonLoad).onClick += ButtonClick;
-		vc=GetComponent<VoxelController>();
+		vc = GetComponent<BreakableObjectController> ();
 	}
-
-	void ButtonClick(GameObject button){
+	
+	void ButtonClick (GameObject button)
+	{
 		//string filename=@"saves\save1.txt";
-		if(button.tag=="save")
-			Save();
-		if(button.tag=="load")
-			Load();
+		if (button.tag == "save")
+			Save ();
+		if (button.tag == "load")
+			Load ();
 	}
 	
-	void Save(){
-		JSONNode root=vc.GetState();
-
-		string stateStr=root.ToString();
-		Debug.Log(stateStr);
-		root.SaveToFile(filename);
+	void Save ()
+	{
+		JSONNode root = vc.GetState ();
+		root.SaveToFile(filename+".save");
+		string stateStr = root.ToString ();
+		Debug.Log (stateStr);
+		//root.SaveToFile(filename);
+		//StringBuilder sb=new StringBuilder(stateStr);
+		
+		System.IO.Directory.CreateDirectory ((new System.IO.FileInfo (filename)).Directory.FullName);
+		FileStream stream = File.Open(filename,FileMode.Create);
+		StreamWriter writer = new System.IO.StreamWriter (stream);
+		writer.Write (stateStr);
+		writer.Close();
+		
+		
 	}
 	
-	void Load(){
-		JSONNode j=JSONClass.LoadFromFile(filename);
-		vc.SetState(j);
-
+	void Load ()
+	{
+		FileStream stream = File.Open(filename,FileMode.Open);
+		
+		StreamReader reader = new System.IO.StreamReader (stream);
+		String jsonStr = reader.ReadToEnd ();
+		JSONNode j = JSONClass.Parse (jsonStr);
+		vc.SetState (j);
+		reader.Close();
 	}
-
-
-
+	
+	
+	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+	{
+		
 	}
 }
