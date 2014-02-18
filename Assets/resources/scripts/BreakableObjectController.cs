@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using SimpleJSON;
 using System.IO;
 
 public class BreakableObjectController : MonoBehaviour
 {
 	GameObject voxelPrototype;
-	[SerializeField]
+	//[SerializeField]
 	Voxel[] voxels;
 	// Use this for initialization
 	void Start ()
@@ -50,25 +51,30 @@ public class BreakableObjectController : MonoBehaviour
 		Voxel voxel=null;
 		BreakableObject bo=null;
 		BreakableVoxelState state=new BreakableVoxelState(goJ);
-		GameObject voxelGo=CreateVoxelPrototype();
-		voxel=voxelGo.GetComponent<Voxel>();
-		bo=voxelGo.GetComponent<BreakableObject>();
-		voxel.b_f=state.b_f;
-		voxel.breakFlag=state.breakFlag;
+		voxelPrototype=CreateVoxelPrototype();
+		voxel=voxelPrototype.GetComponent<Voxel>().CloneMe(state.spriteRect,state.position,transform,state.b_f);
+		bo=voxel.GetComponent<BreakableObject>();
 		voxel.maxB=state.maxB;
-		voxelGo.transform.position=state.position;
-		voxelGo.transform.localScale=state.scale;
+		voxel.breakFlag=state.breakFlag;
 		bo.durableValue=state.durableValue;
-
+		voxel.transform.localScale=state.scale;
+		GameObject.Destroy(voxelPrototype);
 		return voxel;
 	}
 
 
 	public void SetState(JSONNode state){
+		voxels=GetComponentsInChildren<Voxel>();
+		foreach(Voxel v in voxels){
+			GameObject.Destroy(v.gameObject);
+		}
+		//GameObject.Destroy(voxelPrototype);
+		List<Voxel> vs=new List<Voxel>();
 		JSONArray arr=state["voxels"] as JSONArray;
 		foreach(JSONNode node in arr){
-			//Debug.Log(node.ToString());
+			vs.Add(CreateVoxel(node as JSONClass));
 		}
+		voxels=vs.ToArray();
 	}
 
 }
