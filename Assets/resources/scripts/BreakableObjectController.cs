@@ -7,7 +7,8 @@ using System.IO;
 public class BreakableObjectController : MonoBehaviour
 {
 	GameObject voxelPrototype;
-	//[SerializeField]
+	[SerializeField]
+	int voxelCount;
 	Voxel[] voxels;
 	// Use this for initialization
 	void Start ()
@@ -27,7 +28,7 @@ public class BreakableObjectController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		voxelCount=GetComponentsInChildren<Voxel>().Length;
 	}
 
 	public JSONNode GetState(){
