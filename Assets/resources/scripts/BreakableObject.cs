@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BreakableObject : MonoBehaviour {
@@ -34,7 +34,7 @@ public class BreakableObject : MonoBehaviour {
 			bo.durableValue-=m;
 			if(bo.durableValue<=0){
 				GameObject.Destroy(bo.gameObject);
-			}else if(!bo.voxel.breakFlag)
+			}else if(!bo.voxel.destoryFlag)
 			{
 				Voxel[] voxs=bo.voxel.Break(2,2);
 				bos=new BreakableObject[voxs.Length];

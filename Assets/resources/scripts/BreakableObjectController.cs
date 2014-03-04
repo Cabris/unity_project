@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
@@ -36,6 +36,7 @@ public class BreakableObjectController : MonoBehaviour
 		JSONArray voxelsJ=new JSONArray();
 		voxels=GetComponentsInChildren<Voxel>();
 		foreach(Voxel v in voxels){
+			if(!v.destoryFlag)
 			voxelsJ.Add(FromVoxel(v));
 		}
 		stateJ.Add("voxels",voxelsJ);
@@ -53,10 +54,9 @@ public class BreakableObjectController : MonoBehaviour
 		BreakableObject bo=null;
 		BreakableVoxelState state=new BreakableVoxelState(goJ);
 		voxelPrototype=CreateVoxelPrototype();
-		voxel=voxelPrototype.GetComponent<Voxel>().CloneMe(state.spriteRect,state.position,transform,state.b_f);
+		voxel=voxelPrototype.GetComponent<Voxel>().CloneMe(state.spriteRect,state.position,transform,state.divisionCount);
 		bo=voxel.GetComponent<BreakableObject>();
-		voxel.maxB=state.maxB;
-		voxel.breakFlag=state.breakFlag;
+		voxel.maxDivision=state.divisionMax;
 		bo.durableValue=state.durableValue;
 		voxel.transform.localScale=state.scale;
 		GameObject.Destroy(voxelPrototype);

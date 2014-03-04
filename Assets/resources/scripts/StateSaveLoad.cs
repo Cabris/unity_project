@@ -35,9 +35,7 @@ public class StateSaveLoad : MonoBehaviour
 		root.SaveToFile(filename+".save");
 		string stateStr = root.ToString ();
 		Debug.Log (stateStr);
-		//root.SaveToFile(filename);
-		//StringBuilder sb=new StringBuilder(stateStr);
-		
+
 		System.IO.Directory.CreateDirectory ((new System.IO.FileInfo (filename)).Directory.FullName);
 		FileStream stream = File.Open(filename,FileMode.Create);
 		StreamWriter writer = new System.IO.StreamWriter (stream);
