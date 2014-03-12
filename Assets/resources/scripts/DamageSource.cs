@@ -9,6 +9,7 @@ public class DamageSource : MonoBehaviour
 	//CircleCollider2D cCollider2D;
 	public float maxPower;
 	public float updatePeriod;
+	public bool isSleep=false;
 	float counter = 0;
 	
 	// Use this for initialization
@@ -36,7 +37,7 @@ public class DamageSource : MonoBehaviour
 		counter += Time.deltaTime;
 		if (counter >= updatePeriod || updatePeriod <= 0) {
 			counter = 0;
-			if (bos.Count > 0)
+			if (bos.Count > 0&&!isSleep)
 				Explose ();
 		}
 		

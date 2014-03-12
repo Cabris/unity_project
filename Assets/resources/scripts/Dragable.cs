@@ -43,7 +43,7 @@ public class Dragable : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		rigidbody.isKinematic=isMouseDown;
+		//rigidbody.isKinematic=isMouseDown;
 		mousePos = Input.mousePosition;
 		Vector3 mousePos_scene = cam.ScreenToWorldPoint (new Vector3 (mousePos.x, mousePos.y, 0));
 		mousePos_scene.z = 0;
