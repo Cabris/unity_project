@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class DamageSource : MonoBehaviour
 {
 	List<BreakableObject> bos;
-	//public GameObject button;
-	//CircleCollider2D cCollider2D;
 	public float maxPower;
 	public float updatePeriod;
 	public bool isSleep=false;

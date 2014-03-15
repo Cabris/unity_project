@@ -48,7 +48,8 @@ public class Voxel : MonoBehaviour
 					voxels.Add (voxel);
 				}
 			}
-			Disintegration ();
+			GameObject.Destroy(gameObject);
+			//Disintegration ();
 		} else
 			voxels.Add (this);
 		return voxels.ToArray ();
@@ -120,6 +121,12 @@ public class Voxel : MonoBehaviour
 		rigidbody2D.isKinematic=false;
 		gameObject.layer= LayerMask.NameToLayer("rubble");
 
+		Vector2 f=new Vector2();
+		//Random r=new Random();
+		Random.seed=Time.frameCount;
+		f.x=Random.Range(-5,5);
+		f.y=Random.Range(-1,5);
+		rigidbody2D.AddForce(f*0.05f);
 	}
 
 	public Vector2 UnitSize{

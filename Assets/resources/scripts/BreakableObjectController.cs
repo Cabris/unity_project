@@ -9,6 +9,8 @@ public class BreakableObjectController : MonoBehaviour
 	GameObject voxelPrototype;
 	[SerializeField]
 	int voxelCount;
+	[SerializeField]
+	Terrain terrain;
 	Voxel[] voxels;
 	// Use this for initialization
 	void Start ()
@@ -20,7 +22,7 @@ public class BreakableObjectController : MonoBehaviour
 	GameObject CreateVoxelPrototype(){
 		GameObject prototype;
 		prototype=Instantiate(Resources.Load("voxel")) as GameObject;
-		prototype.transform.parent=this.transform;
+		prototype.transform.parent=terrain.transform;
 		prototype.GetComponent<Voxel>().vControlor=this;
 		return prototype;
 	}

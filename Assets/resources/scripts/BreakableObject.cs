@@ -33,7 +33,8 @@ public class BreakableObject : MonoBehaviour {
 		if(m >0){
 			bo.durableValue-=m;
 			if(bo.durableValue<=0){
-				GameObject.Destroy(bo.gameObject);
+				bo.voxel.Disintegration();
+				//GameObject.Destroy(bo.gameObject);
 			}else if(!bo.voxel.destoryFlag)
 			{
 				Voxel[] voxs=bo.voxel.Break(2,2);
