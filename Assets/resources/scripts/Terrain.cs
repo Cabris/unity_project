@@ -12,4 +12,7 @@ public class Terrain : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void RegisterVoxel(Voxel v){}
+
 }

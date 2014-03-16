@@ -7,9 +7,14 @@ public class Voxel : MonoBehaviour
 {
 	public BreakableObjectController vControlor;
 	public int divisionCount = 0;//0~maxB
+	[SerializeField]
 	public	int maxDivision = 4;
-	public bool destoryFlag = false;
-	public float lifeTime;
+	//[SerializeField]
+	bool destoryFlag = false;
+	[SerializeField]
+	float lifeTime;
+	[SerializeField]
+	Vector2 unitSize;
 	
 	// Use this for initialization
 	void Start ()
@@ -19,12 +24,13 @@ public class Voxel : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float dt=Time.deltaTime;
-		if(destoryFlag)
-			lifeTime-=dt;
-		if(lifeTime<=0){
+		float dt = Time.deltaTime;
+		if (destoryFlag)
+			lifeTime -= dt;
+		if (lifeTime <= 0) {
 			GameObject.Destroy (gameObject);
 		}
+		unitSize = UnitSize;
 	}
 	
 	public Voxel[] Break (int gridX, int gridY)
@@ -48,7 +54,7 @@ public class Voxel : MonoBehaviour
 					voxels.Add (voxel);
 				}
 			}
-			GameObject.Destroy(gameObject);
+			GameObject.Destroy (gameObject);
 			//Disintegration ();
 		} else
 			voxels.Add (this);
@@ -118,29 +124,32 @@ public class Voxel : MonoBehaviour
 	public void Disintegration ()
 	{
 		destoryFlag = true;
-		rigidbody2D.isKinematic=false;
-		gameObject.layer= LayerMask.NameToLayer("rubble");
-
-		Vector2 f=new Vector2();
+		rigidbody2D.isKinematic = false;
+		gameObject.layer = LayerMask.NameToLayer ("rubble");
+		
+		Vector2 f = new Vector2 ();
 		//Random r=new Random();
-		Random.seed=Time.frameCount;
-		f.x=Random.Range(-5,5);
-		f.y=Random.Range(-1,5);
-		rigidbody2D.AddForce(f*0.05f);
+		Random.seed = Time.frameCount;
+		f.x = Random.Range (-5, 5);
+		f.y = Random.Range (-1, 5);
+		rigidbody2D.AddForce (f * 0.05f);
 	}
-
-	public Vector2 UnitSize{
-		get{
-			Vector2 size=new Vector2();
+	
+	public Vector2 UnitSize {
+		get {
+			Vector2 size = new Vector2 ();
 			float pixelsToUnits = CameraConfig.Singleten.PixelsToUnits;
 			Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
 			Rect rect = _sprite.rect;
-			size.x=rect.width/pixelsToUnits;
-			size.y=rect.height/pixelsToUnits;
+			size.x = rect.width / pixelsToUnits;
+			size.y = rect.height / pixelsToUnits;
 			return size;
 		}
 	}
-
+	
+	public bool IsDestorying {
+		get{ return destoryFlag;}
+	}
 	
 }
 

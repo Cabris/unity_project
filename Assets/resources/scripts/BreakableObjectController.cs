@@ -6,6 +6,7 @@ using System.IO;
 
 public class BreakableObjectController : MonoBehaviour
 {
+	[SerializeField]
 	GameObject voxelPrototype;
 	[SerializeField]
 	int voxelCount;
@@ -24,6 +25,7 @@ public class BreakableObjectController : MonoBehaviour
 		prototype=Instantiate(Resources.Load("voxel")) as GameObject;
 		prototype.transform.parent=terrain.transform;
 		prototype.GetComponent<Voxel>().vControlor=this;
+		prototype.GetComponent<Voxel>().ResetColliderSizeBySprite();
 		return prototype;
 	}
 	
@@ -38,7 +40,7 @@ public class BreakableObjectController : MonoBehaviour
 		JSONArray voxelsJ=new JSONArray();
 		voxels=GetComponentsInChildren<Voxel>();
 		foreach(Voxel v in voxels){
-			if(!v.destoryFlag)
+			if(!v.IsDestorying)
 			voxelsJ.Add(FromVoxel(v));
 		}
 		stateJ.Add("voxels",voxelsJ);
