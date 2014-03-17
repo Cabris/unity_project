@@ -7,8 +7,6 @@ public class Voxel : MonoBehaviour
 {
 	public BreakableObjectController vControlor;
 	public int divisionCount = 0;//0~maxB
-	[SerializeField]
-	public	int maxDivision = 4;
 	//[SerializeField]
 	bool destoryFlag = false;
 	[SerializeField]
@@ -36,13 +34,13 @@ public class Voxel : MonoBehaviour
 	public Voxel[] Break (int gridX, int gridY)
 	{
 		List<Voxel> voxels = new List<Voxel> ();
-		if (divisionCount >= maxDivision) {
+		if (divisionCount >= vControlor.maxDivision) {
 			Disintegration ();
 			return voxels.ToArray ();
 		}
 		Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
 		Rect parentRect = _sprite.rect;
-		if (gridX > 1 && gridY > 1 && divisionCount < maxDivision) {
+		if (gridX > 1 && gridY > 1 && divisionCount < vControlor.maxDivision) {
 			
 			BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
 			Vector2 gridSize = new Vector2 (gridX, gridY);

@@ -8,11 +8,13 @@ public class BreakableObjectController : MonoBehaviour
 {
 	[SerializeField]
 	GameObject voxelPrototype;
-	[SerializeField]
-	int voxelCount;
+//	[SerializeField]
+//	int voxelCount;
 	[SerializeField]
 	Terrain terrain;
-	Voxel[] voxels;
+	//Voxel[] voxels;
+	[SerializeField]
+	public	int maxDivision = 4;
 	// Use this for initialization
 	void Start ()
 	{
@@ -32,18 +34,20 @@ public class BreakableObjectController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		voxelCount=GetComponentsInChildren<Voxel>().Length;
+		//voxelCount=terrain.GetComponentsInChildren<Voxel>().Length;
 	}
 
 	public JSONNode GetState(){
 		JSONClass stateJ=new JSONClass();
 		JSONArray voxelsJ=new JSONArray();
-		voxels=GetComponentsInChildren<Voxel>();
+		Voxel[] voxels=terrain.GetComponentsInChildren<Voxel>();
+//		voxels=GetComponentsInChildren<Voxel>();
 		foreach(Voxel v in voxels){
 			if(!v.IsDestorying)
 			voxelsJ.Add(FromVoxel(v));
 		}
 		stateJ.Add("voxels",voxelsJ);
+		stateJ.Add("maxDivision",new JSONData(maxDivision));
 		return stateJ;
 	}
 
@@ -58,9 +62,9 @@ public class BreakableObjectController : MonoBehaviour
 		BreakableObject bo=null;
 		BreakableVoxelState state=new BreakableVoxelState(goJ);
 		voxelPrototype=CreateVoxelPrototype();
-		voxel=voxelPrototype.GetComponent<Voxel>().CloneMe(state.spriteRect,state.position,transform,state.divisionCount);
+		voxel=voxelPrototype.GetComponent<Voxel>().CloneMe(state.spriteRect,state.position,terrain.transform,state.divisionCount);
 		bo=voxel.GetComponent<BreakableObject>();
-		voxel.maxDivision=state.divisionMax;
+		//voxel.maxDivision=state.divisionMax;
 		bo.durableValue=state.durableValue;
 		voxel.transform.localScale=state.scale;
 		GameObject.Destroy(voxelPrototype);
@@ -69,17 +73,18 @@ public class BreakableObjectController : MonoBehaviour
 
 
 	public void SetState(JSONNode state){
-		voxels=GetComponentsInChildren<Voxel>();
+		Voxel[] voxels=terrain.GetComponentsInChildren<Voxel>();
 		foreach(Voxel v in voxels){
 			GameObject.Destroy(v.gameObject);
 		}
 		//GameObject.Destroy(voxelPrototype);
-		List<Voxel> vs=new List<Voxel>();
+		//List<Voxel> vs=new List<Voxel>();
 		JSONArray arr=state["voxels"] as JSONArray;
 		foreach(JSONNode node in arr){
-			vs.Add(CreateVoxel(node as JSONClass));
+			CreateVoxel(node as JSONClass);
 		}
-		voxels=vs.ToArray();
+		maxDivision=state["maxDivision"].AsInt;
+		//voxels=vs.ToArray();
 	}
 
 }

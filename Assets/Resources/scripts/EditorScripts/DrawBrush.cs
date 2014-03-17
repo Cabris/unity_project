@@ -2,6 +2,7 @@
 using System.Collections;
 [RequireComponent(typeof(BaseBrush))]
 public class DrawBrush : MonoBehaviour {
+	public int size;
 	public Terrain terrain;
 	// Use this for initialization
 	void Start () {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public struct BreakableVoxelState
 {
 	public int divisionCount{ get; set; }//0 1 2 3 4
-	public	int divisionMax{ get; set; }
+	//public	int divisionMax{ get; set; }
 	//public bool breakFlag{ get; set; }
 	public Vector3 position{ get; set; }
 	public Vector3 scale{ get; set; }
@@ -19,7 +19,7 @@ public struct BreakableVoxelState
 		durableValue = bo.durableValue;
 		Voxel v = bo.GetComponent<Voxel> ();
 		divisionCount = v.divisionCount;
-		divisionMax = v.maxDivision;
+	//	divisionMax = v.maxDivision;
 		//breakFlag = v.destoryFlag;
 		position = bo.transform.position;
 		scale = bo.transform.localScale;
@@ -29,7 +29,7 @@ public struct BreakableVoxelState
 	public BreakableVoxelState (JSONClass goJ)
 	{
 		divisionCount = goJ ["divisionCount"].AsInt;
-		divisionMax = goJ ["divisionMax"].AsInt;
+		//divisionMax = goJ ["divisionMax"].AsInt;
 		//breakFlag = goJ ["breakFlag"].AsBool;
 		durableValue = goJ ["durableValue"].AsFloat;
 		position = goJ ["pos"].ToVector3 ();
@@ -41,7 +41,7 @@ public struct BreakableVoxelState
 	{
 		JSONClass goJ = new JSONClass ();
 		goJ.Add ("divisionCount", new JSONData (divisionCount));
-		goJ.Add ("divisionMax", new JSONData (divisionMax));
+		//goJ.Add ("divisionMax", new JSONData (divisionMax));
 		//goJ.Add ("breakFlag", new JSONData (breakFlag));
 		goJ.Add ("durableValue", new JSONData (durableValue));
 		goJ.Add ("pos", goJ.JsonVector3 (position));
