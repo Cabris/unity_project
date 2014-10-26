@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
- Copyright © 2011-2012 Tasharen Entertainment
-                Version 2.2.3
+ Copyright Â© 2011-2012 Tasharen Entertainment
+                Version 2.7.0
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -34,6 +34,197 @@ Using NGUI with JavaScript (UnityScript)? Read this first: http://www.tasharen.c
 -----------------
  Version History
 -----------------
+
+2.7.0:
+- NEW: Added a way to resolve all Depth/Z issues. Check your UIPanels and enable Depth Sorting.
+- FIX: DownloadTexture no longer leaves a shadow of the previous texture behind.
+- FIX: UIDragObject will no longer behave oddly with multiple touches.
+- FIX: Popup menu will now correctly trigger OnChange functions on the same selection.
+- FIX: UITexture will now default to the Unlit/Transparent Colored shader.
+- FIX: Atlas Maker will no longer default sprite list to be hidden.
+
+2.6.5:
+- FIX: Labels now have "Max Height", and "Max Lines" again works as expected.
+- FIX: Widgets no longer store a reference to texture and material.
+- FIX: Fix for some issues with the dynamic fonts.
+- FIX: Removed the "password" setting from UILabel in order to clear up some confusion.
+- FIX: Transparent colored shader no longer has fixed function pipeline code inside.
+- FIX: Atlas maker will now be more perforce-friendly.
+- FIX: Popup list will no longer show on Click when the Popup List script is disabled.
+- FIX: NGUIMath.Calculate functions will now ignore recently disabled widgets.
+- FIX: UIWidget will no longer attempt to create a panel until after Start().
+- FIX: UICamera.touchCount and UICamera.dragCount will now work correctly with multi-touch turned off.
+- FIX: WP8 and BB10 tweaks.
+
+2.6.4:
+- NEW: UIStretch now has the 'run once' option matching UIAnchor.
+- FIX: Non-sticky press was not working quite right...
+- FIX: Rewrote the transform inspector.
+- FIX: Removed the "depth pass" option from the panel's inspector since 99.9% of the people were mis-using it.
+- FIX: UIButtonKeys.startsSelected got broken at some point.
+- FIX: UIPopupList now respects atlas pixel size and again works correctly for menu style popups.
+- FIX: UIPanel will no longer keep references to materials when disabled.
+
+2.6.3:
+- NEW: Noticeably improved performance and garbage collection when using Unity 4.1+
+- NEW: It's now possible to select sprites in the Atlas Maker for preview purposes.
+- NEW: Transform inspector will now warn you when widget panel is marked as 'static'.
+- NEW: You can now toggle the panel's "widgets are static" flag from within the panel tool.
+- FIX: Widgets will no longer be constantly checking for layer changes in update.
+- FIX: Shrink-to-fit labels will now auto-grow when possible.
+- FIX: Labels can no longer be resized using handles (but can still be moved and rotated).
+- FIX: Labels will now auto-adjust their size properly when the max width gets adjusted.
+- FIX: Creating an atlas would rarely throw a null exception. This has been fixed.
+- FIX: Draggable panel + non-sticky keys will now mix properly.
+- FIX: Drag & drop should now work with non-sticky press.
+- FIX: Flash export should now work again.
+- DEL: Dropped all remaining support for Unity 3.4.
+
+2.6.2:
+- NEW: You can now automatically apply alpha pre-multiplication to textures when creating an atlas.
+- NEW: Added UIWidget.Raycast to perform a raycast without using colliders.
+- NEW: Added a texture preview to UITexture.
+- NEW: Added an option to UIAnchor to run only once, and then destroy itself. Also optimized it slightly.
+- NEW: Transform inspector will now gray out fields that are not commonly used by the UI when a widget is selected.
+- FIX: Transform multi-object editing was not quite right for widgets...
+- FIX: "Shrink to fit" option on labels now works vertically, not just horizontally.
+- FIX: Changing a sprite in inspector will no longer auto-resize it. Use MakePixelPerfect to resize it.
+
+2.6.1:
+- FIX: Dynamic font-related fixes.
+- FIX: Depth pass will now be force-disabled when the panel is clipped.
+- FIX: Sticky press option on the UICamera no longer breaks OnDrop events.
+- FIX: UIInput's useLabelTextAtStart should now work again.
+- FIX: UICamera.touchCount should now be accurate.
+- FIX: Fixed a typo in the image button inspector.
+- FIX: UIWidget.UpdateGeometry will now check for object's disabled state prior to filling the geometry.
+
+2.6.0
+- NEW: Added dynamic font support for Unity 4.0.
+- NEW: Handles can now be toggled on/off from the NGUI menu.
+- NEW: Atlas maker will now be limited by max texture size, and will no longer make it possible to corrupt an atlas.
+- NEW: Warning will be shown on the panel if clipping is not possible (GLES 1.1).
+- NEW: Checkbox can now have fade in the checkmark instantly.
+- NEW: You can now leave C++ style comments (//) in the localization files.
+- NEW: You can now paste into input fields in stand-alone builds.
+- NEW: Added disabled state to UIImageButton (Nicki)
+- FIX: UISlider will now use the sprite size rather than collider size to determine the touch effect area.
+- FIX: Resetting the tween will now mark it as not started.
+- FIX: Blank labels will no longer be localized.
+- FIX: Resetting the sprite animation will also reset the sprite back to 0.
+
+2.5.1
+- NEW: Added a "shrink to fit" option for labels that will scale down the text if it doesn't fit.
+- FIX: Re-added the "import font" field in the font inspector.
+
+2.5.0
+- DEL: Deprecated Unity 3.5.4 and earlier support. If you are using 3.5.4 or earlier, DO NOT UPDATE!
+- OLD: Sliced, tiled, and filled sprites have been deprecated.
+- NEW: Regular sprite now has options for how the sprite is drawn.
+- NEW: NGUI widgets now have visual placement handles.
+- NEW: Adding a widget now automatically creates a UI hierarchy if one is not present.
+- NEW: NGUI menu has been redesigned with new options and shortcut keys.
+- FIX: Widget selection box now takes padding into account properly.
+- FIX: Changing the pivot no longer moves the widget visually.
+- FIX: Font symbols now use padding instead of inner rect for offset.
+- FIX: Font symbols no longer need to be used in the editor before they are usable in-game.
+- FIX: More fixes to how tweens get initialized/started.
+- FIX: Re-added UISlider.fullSize property for better backwards compatibility.
+- FIX: Unity 4.1-related fixes.
+- FIX: Variety of other minor tweaks and changes.
+
+2.3.6
+- NEW: Added a much easier way to add symbols and emoticons (select the font, you will see it).
+- NEW: Added a couple of conditional warnings to the UIPanel warning of common mistakes.
+- NEW: Various improvements to widget and sprite inspectors.
+- FIX: There is no need to display the "symbols" option on the labels if the font doesn't have any.
+- FIX: Removed the hard-coded screen height-based touch threshold on the UICamera.
+- FIX: Removed the need for sliders to have a "full size" property.
+
+2.3.5:
+- NEW: Font symbols can now have an offset for easier positioning.
+- FIX: UISlider will now set the 'current' property before calling the delegate.
+- FIX: Fixed the checkbox animation issue that was brought to light as a result of 2.3.4.
+- FIX: Minor other tweaks, nothing important.
+
+2.3.4:
+- NEW: Added the ability to easily copy/paste widget colors in the inspector.
+- FIX: Random fixes for minor issues noted on the forums.
+- FIX: Minor performance improvements.
+
+2.3.3
+- NEW: UIPanels now have alpha for easy fading, and TweenAlpha can now tween panels.
+- NEW: Added UICamera.debug mode for when you want to know what the mouse is hovering over.
+- NEW: Added AnimatedColor and AnimatedAlpha scripts in case you want to animate widget color or alpha via Unity's animations.
+- NEW: Android devices should now be able to support a keyboard and a controller (OUYA).
+- NEW: Added UIFont.pixelSize, making it possible to have HD/UD fonts that are not a part of an atlas.
+- FIX: Unity 4.1 optimization fix.
+- FIX: Label shadow should now be affected by alpha using PMA shaders.
+- FIX: UICheckbox.current will now work correctly for checkbox event receivers.
+- FIX: UIButton series of scripts should now initialize themselves on start, not when they are used.
+- FIX: TweenOrthoSize should now tween the size instead of FOV (o_O).
+- FIX: Sprite selection window will now show sprites properly when the atlas is not square.
+- FIX: UIAnchor should now always maintain the same Z-depth, and once again works in 3D UIs.
+
+2.3.1
+- NEW: Added UICamera.touchCount.
+- NEW: Added an option on the UIInput to turn on auto-correction on mobiles.
+- FIX: Fixed compilation on Unity 3.
+- FIX: Font inspector will now display the font in a preview window.
+
+2.3.0:
+- NEW: Added Premultiplied Alpha support to NGUI along with the appropriate shaders.
+- NEW: Added UIButtonKeyBinding script that makes it easy to do button key bindings.
+- NEW: Transform inspector now supports multi-object editing (contribution by Bardelot 'Cripple' Alexandre)
+- NEW: UIRoot's 'automatic' flag is now gone, replaced by a more intuitive drop-down list.
+- NEW: It's now possible to make UIRoot fixed size on mobiles, but pixel-perfect on desktops (it's an option).
+- NEW: You can now specify an animation curve on all tweens.
+- NEW: Localization will now attempt to load the starting language automatically.
+- NEW: Added UICamera.onCustomInput callback making it possible to add input form custom devices.
+- NEW: Support for optimizations in Unity 4.1.
+- FIX: Tweaks to Localization to make it easier to use. You can now just do Localization.Localize everywhere.
+- FIX: UILocalize attached to a label used by input will now localize its default value instead.
+- FIX: Kerning should now get saved properly. You will need to re-import your fonts.
+- FIX: UICamera with multi-touch turned off should now work properly when returning from sleep.
+- FIX: ActiveAnimation's onFinished callback will no longer wait for all animation states to finish (only the playing one).
+- FIX: UICamera's touch detection should now work properly when returning from sleep.
+- FIX: Changed the way MakePixelPerfect works a bit, hopefully fixing an issue with sprites moving by a pixel.
+- FIX: UIPanel should now display the clipped rectangle correctly.
+- FIX: UIInputSaved will now save on submit.
+- DEL: Removed UIAnchor.depthOffset seeing as it caused more confusion than anything else. Just use an offset child GameObject.
+- DEL: Deprecated hard clipping, seeing as it causes issues on too many devices.
+
+2.2.7:
+- NEW: Added UICamera.stickyPress option that makes it possible for multiple objects to receive OnPress notifications from a single touch.
+- NEW: UICamera.hoveredObject now works for touch events as well, and will always hold the result of the last Raycast.
+- NEW: Added "Edit" buttons to all atlase and font fields, making easy to select the atlas/font for modification.
+- NEW: Added Localization.Localize. Was going to change Localization.Get to be static, but didn't want to break backwards compatibility.
+- FIX: Inventory example should work correctly in Unity 4.0.
+- FIX: You can now set UILabel.text to null.
+- FIX: UIPanel was not drawing its rect correctly in some cases.
+- FIX: Assortment of tweaks and fixes submitted by Andrew Osborne (community contribution).
+- FIX: Switching a mainTexture of a UITexture belonging to a clipped panel will now work properly.
+
+2.2.6:
+- NEW: Mouse and touch events now have an option to be clipped by the panel's clipping rect, just like widgets.
+- NEW: Made it possible to delete several sprites at once (Atlas Maker).
+- FIX: Added proper support for Unity 4-based nested active state while maintaining backwards compatibility.
+
+2.2.5:
+- NEW: Double-clicking a sprite in the sprite selection window will now close the window.
+- FIX: UIRoot will now only consider min/max clamping in automatic mode.
+- FIX: Password fields should now get wrapped properly.
+- FIX: MakePixelPerfect() will now preserve negatives.
+- FIX: UISlider will no longer jump to 0 when clicked with the controller.
+
+2.2.4:
+- NEW: SpringPanel and UICenterOnChild now have an OnFinished callback.
+- NEW: UIForwardEvents now has OnScroll.
+- FIX: UISavedOption now unregisters the state change delegate when disabled.
+- FIX: IgnoreTimeScale clamps time delta at 1 sec maximum, fixing a long pause after returning from sleep.
+- FIX: UIWidget now correctly cleans up UITextures that have been re-parented.
+- FIX: Tween scripts now sample the tween immediately if the duration is 0.
+- FIX: UIFont and UIAtlas MarkAsDirty() function now works correctly with a reference atlas (in the editor).
 
 2.2.3:
 - FIX: Small fix for UIAnchor using a clipped panel container (thanks yuewah!)

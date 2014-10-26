@@ -41,7 +41,6 @@ public class Voxel : MonoBehaviour
 		Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
 		Rect parentRect = _sprite.rect;
 		if (gridX > 1 && gridY > 1 && divisionCount < vControlor.maxDivision) {
-			
 			BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
 			Vector2 gridSize = new Vector2 (gridX, gridY);
 			for (int i=0; i<gridY; i++) {
@@ -84,7 +83,7 @@ public class Voxel : MonoBehaviour
 		return vox;
 	}
 	
-	private	Rect culacRect (Rect baseR, Vector2 gridSize, Vector2 index)
+	public static Rect culacRect (Rect baseR, Vector2 gridSize, Vector2 index)
 	{
 		Rect r = new Rect ();
 		Vector2 topLeft, size;
@@ -99,7 +98,7 @@ public class Voxel : MonoBehaviour
 		return r;
 	}
 	
-	private Vector3 culacPos (Transform baseT, Rect baseR, Vector2 gridSize, Vector2 index)
+	public static Vector3 culacPos (Transform baseT, Rect baseR, Vector2 gridSize, Vector2 index)
 	{
 		float pixelsToUnits = CameraConfig.Singleten.PixelsToUnits;
 		Vector3 p = new Vector3 ();

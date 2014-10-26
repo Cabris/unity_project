@@ -15,6 +15,7 @@ public class TerrainEditor : MonoBehaviour {
 		eraseBrush=GetComponentInChildren<EraseBrush>();
 		UIEventListener.Get(drawButton).onClick += onButtonClick;
 		UIEventListener.Get(eraseButton).onClick += onButtonClick;
+		onButtonClick(drawButton);
 	}
 	
 	// Update is called once per frame

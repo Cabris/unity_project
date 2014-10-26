@@ -1,9 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\unity_game\Assets\Scripts\SmartFox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\EditorScripts\DrawBrush.cs">
     <Files>
-      <File FileName="..\..\unity_game\Assets\Scripts\gui_Login.cs" Line="180" Column="2" />
-      <File FileName="..\..\unity_game\Assets\Scripts\SmartFox.cs" Line="22" Column="2" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\TerrainEditor.cs" Line="24" Column="3" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\DrawBrush.cs" Line="56" Column="8" />
+      <File FileName="Assets\Resources\scripts\Terrain.cs" Line="16" Column="24" />
+      <File FileName="Assets\Resources\scripts\Voxel.cs" Line="109" Column="3" />
+      <File FileName="Assets\Resources\scripts\Extension.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\scripts\CameraConfig.cs" Line="29" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

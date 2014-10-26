@@ -1,4 +1,4 @@
-Shader "Unlit/Transparent Colored (HardClip)"
+Shader "Unlit/Premultiplied Colored (SoftClip)"
 {
 	Properties
 	{
@@ -21,19 +21,20 @@ Shader "Unlit/Transparent Colored (HardClip)"
 			Cull Off
 			Lighting Off
 			ZWrite Off
-			Offset -1, -1
+			AlphaTest Off
 			Fog { Mode Off }
+			Offset -1, -1
 			ColorMask RGB
-			Blend SrcAlpha OneMinusSrcAlpha
+			Blend One OneMinusSrcAlpha
 
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
 			#include "UnityCG.cginc"
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			float2 _ClipSharpness = float2(20.0, 20.0);
 
 			struct appdata_t
 			{
@@ -62,9 +63,15 @@ Shader "Unlit/Transparent Colored (HardClip)"
 
 			half4 frag (v2f IN) : COLOR
 			{
-				float2 factor = abs(IN.worldPos);
-				clip(1.0 - max(factor.x, factor.y));
-				return tex2D(_MainTex, IN.texcoord) * IN.color;
+				// Softness factor
+				float2 factor = (float2(1.0, 1.0) - abs(IN.worldPos)) * _ClipSharpness;
+			
+				// Sample the texture
+				half4 col = tex2D(_MainTex, IN.texcoord) * IN.color;
+				float fade = clamp( min(factor.x, factor.y), 0.0, 1.0);
+				col.a *= fade;
+				col.rgb = lerp(half3(0.0, 0.0, 0.0), col.rgb, fade);
+				return col;
 			}
 			ENDCG
 		}
@@ -72,6 +79,8 @@ Shader "Unlit/Transparent Colored (HardClip)"
 	
 	SubShader
 	{
+		LOD 100
+
 		Tags
 		{
 			"Queue" = "Transparent"
@@ -79,17 +88,16 @@ Shader "Unlit/Transparent Colored (HardClip)"
 			"RenderType" = "Transparent"
 		}
 		
-		LOD 100
-		Cull Off
-		Lighting Off
-		ZWrite Off
-		Fog { Mode Off }
-		ColorMask RGB
-		AlphaTest Greater .01
-		Blend SrcAlpha OneMinusSrcAlpha
-		
 		Pass
 		{
+			Cull Off
+			Lighting Off
+			ZWrite Off
+			AlphaTest Off
+			Fog { Mode Off }
+			Offset -1, -1
+			ColorMask RGB
+			Blend One OneMinusSrcAlpha 
 			ColorMaterial AmbientAndDiffuse
 			
 			SetTexture [_MainTex]

@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-[RequireComponent(typeof(BaseBrush))]
-public class EraseBrush : MonoBehaviour
+
+public class EraseBrush : BaseBrush
 {
 	DamageSource damage;
 	BaseBrush brush;
 
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
 	{
+		base.Start ();
 		damage = GetComponentInChildren<DamageSource> ();
 		brush=GetComponent<BaseBrush>();
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	protected override void Update ()
 	{
+		base.Update ();
 		damage.isSleep=!brush.IsActive;
 	}
 

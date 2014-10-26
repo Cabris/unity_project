@@ -9,32 +9,33 @@ public class BaseBrush : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	protected virtual void Update ()
 	{
-		
 		if (Input.GetMouseButtonDown(0)){
 			IsActive=true;
 		}
 		if(Input.GetMouseButtonUp(0)){
 			IsActive=false;
 		}
-		//		if (Input.GetMouseButtonDown(1))
-		//		
-		//		if (Input.GetMouseButtonDown(2))
 		
 		float wheelValue=Input.GetAxis("Mouse ScrollWheel");
 		SetBrushSize(wheelValue);
-		Vector3 mousePosInWorld=Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		transform.position=mousePosInWorld;
+		updatePosition ();
 		
 	}
+
+	protected virtual void updatePosition ()
+	{
+		Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		transform.position = mousePosInWorld;
+	}
 	
-	void SetBrushSize(float sizeMulp){
+	protected virtual void SetBrushSize(float sizeMulp){
 		Vector3 scale=transform.localScale;
 		Vector3 max=new Vector3(1,1,1);
 		Vector3 min=new Vector3(0.05f,0.05f,0.05f);
