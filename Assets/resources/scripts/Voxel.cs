@@ -17,6 +17,7 @@ public class Voxel : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+
 	}
 	
 	// Update is called once per frame
@@ -50,8 +51,9 @@ public class Voxel : MonoBehaviour
 					Voxel voxel = CloneMe (rect, pos, transform.parent, this.divisionCount + 1);
 					voxels.Add (voxel);
 				}
-			}
-			GameObject.Destroy (gameObject);
+			}	
+			gameObject.name="REMOVED";
+			GameObject.DestroyImmediate (gameObject);
 			//Disintegration ();
 		} else
 			voxels.Add (this);

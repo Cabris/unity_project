@@ -46,30 +46,56 @@ public class DamageSource : MonoBehaviour
 		
 	}
 	
-	public Vector2 culacPower (BreakableObject bo)
+	public Vector2 culacPower (BreakableObject target)
 	{
-		CircleCollider2D cCollider2D = GetComponent<CircleCollider2D> ();
-		Vector2 boP = bo.transform.position.ToVector2 ();
-		BoxCollider2D bc = bo.GetComponent<BoxCollider2D> ();
-		float radius = cCollider2D.radius * transform.localScale.x;
-		Vector2 p = transform.position.ToVector2 ();
+		//CircleCollider2D cCollider2D = GetComponent<CircleCollider2D> ();
+		//float radius = cCollider2D.radius * transform.localScale.x;
+		//		LayerMask mask = bc.gameObject.layer;
+		//		RaycastHit2D[] hits = Extension.CircleScan (p, radius, mask, bc);
 
-		LayerMask mask = bc.gameObject.layer;
-		RaycastHit2D[] hits = Extension.CircleScan (p, radius, mask, bc);
-		if (hits.Length == 0)
+		if (target == null)
+			return new Vector2();
+		Vector2 targetPos = target.transform.position.ToVector2 ();
+		BoxCollider2D targetCollider = target.GetComponent<BoxCollider2D> ();
+		Vector2 pos = transform.position.ToVector2 ();
+
+		BoxCollider2D damageArea = GetComponent<BoxCollider2D> ();
+		Vector2 vect = (targetPos-pos).normalized;
+
+		Rect targetRect = new Rect ();
+		targetRect.center = targetPos;
+		targetRect.width = targetCollider.size.x;
+		targetRect.height = targetCollider.size.y;
+
+		Rect damageRect = new Rect ();
+		damageRect.center = pos;
+		damageRect.width = damageArea.size.x;
+		damageRect.height = damageArea.size.y;
+
+		float intersection = Extension.intersection (damageRect, targetRect).area();
+		if(intersection==0)
 			return new Vector2 ();
-		Vector2 power = new Vector2 ();
-		foreach (RaycastHit2D hit in hits) {
-			//Debug.Log( hit.fraction);
-			float t = 1 - hit.fraction;
-			power += hit.normal * t;
-		}
-		if (bc.OverlapPoint (p))
-			return new Vector2 (maxPower, maxPower);
-		power.Normalize ();	
-		float d = Vector2.Distance (boP, p);
-		float factor = (radius * radius) / (d * d);
-		return -power * factor * maxPower;
+		float minArea = Mathf.Min (damageRect.area(),targetRect.area());
+		float factor = intersection / minArea;
+
+		Vector2 power=-vect * factor * maxPower;
+//		Debug.Log ("pow: " + power);
+		return power;
+		
+//		if (hits.Length == 0)
+//			return new Vector2 ();
+//		Vector2 power = new Vector2 ();
+//		foreach (RaycastHit2D hit in hits) {
+//			//Debug.Log( hit.fraction);
+//			float t = 1 - hit.fraction;
+//			power += hit.normal * t;
+//		}
+//		if (bc.OverlapPoint (p))
+//			return new Vector2 (maxPower, maxPower);
+//		power.Normalize ();	
+//		float d = Vector2.Distance (boP, p);
+//		float factor = (radius * radius) / (d * d);
+//		return -power * factor * maxPower;
 	}
 		
 	public void Explose ()

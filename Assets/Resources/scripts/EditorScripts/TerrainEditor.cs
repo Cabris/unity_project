@@ -6,7 +6,7 @@ public class TerrainEditor : MonoBehaviour {
 	public Terrain terrain;
 	DrawBrush drawBrush;
 	EraseBrush eraseBrush;
-	public GameObject drawButton,eraseButton;
+	public GameObject drawButton,eraseButton,stateLabel;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +34,7 @@ public class TerrainEditor : MonoBehaviour {
 			eraseBrush.gameObject.SetActive(true);
 			drawBrush.gameObject.SetActive(false);
 		}
-
+		stateLabel.GetComponent<UILabel> ().text = button.name;
 
 	}
 

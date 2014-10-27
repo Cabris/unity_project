@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Terrain : MonoBehaviour {
 
+	Voxel[] voxels;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,6 +15,10 @@ public class Terrain : MonoBehaviour {
 	
 	}
 
-	public void RegisterVoxel(Voxel v){}
+	void updateVoxels(){
+		voxels = GetComponentsInChildren<Voxel> ();
+	}
+
+	public void AddVoxel(Voxel v){}
 
 }

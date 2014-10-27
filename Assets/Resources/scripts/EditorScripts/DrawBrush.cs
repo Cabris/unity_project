@@ -23,6 +23,9 @@ public class DrawBrush : BaseBrush {
 	protected override void Update ()
 	{
 		base.Update ();
+		if (IsActive) {
+		
+		}
 
 	}
 
@@ -44,12 +47,10 @@ public class DrawBrush : BaseBrush {
 		                                baseR.height * baseT.localScale.y / gridSize.y) / pixelsToUnits;
 		Vector3 p=_p;
 		Vector2 up=new Vector2();
-		up.x=toInt(_p.x/unitSize.x);
-		up.y=toInt(_p.y/unitSize.y);
-		//up.x=(int)(up.x);
-		//up.y=(int)(up.y);
-		//
-		Debug.Log("up: "+up+", u: "+unitSize.x);
+		up.x=Extension.toInt(_p.x/unitSize.x);
+		up.y=Extension.toInt(_p.y/unitSize.y);
+
+//		Debug.Log("up: "+up+", u: "+unitSize.x);
 
 		p = new Vector3(up.x*unitSize.x,up.y*unitSize.y);
 		if(div==breakController.maxDivision){
@@ -61,15 +62,7 @@ public class DrawBrush : BaseBrush {
 
 	}
 
-	int toInt(float f){
-		if(f>0){
-			return (int)(f+.5f);
-		}
-		if(f<0){
-			return (int)(f-.5f);
-		}
-		return 0;
-	}
+
 
 	void updateBrushSize(){
 		//Debug.Log(div);

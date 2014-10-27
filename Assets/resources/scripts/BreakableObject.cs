@@ -21,7 +21,8 @@ public class BreakableObject : MonoBehaviour {
 		if(bos.Length==0)
 			return;
 		foreach(BreakableObject b in bos){
-			b.Break(exp,bo);
+			if(bo!=null)
+				b.Break(exp,bo);
 		}
 	}
 

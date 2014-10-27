@@ -24,6 +24,21 @@ public static class Extension
 		return hits.ToArray();
 	}
 
+	public static Rect intersection(Rect a,Rect b){
+		float x =  Mathf.Max(a.x, b.x);
+		float num1 = Mathf.Min(a.x + a.width, b.x + b.width);
+		float y = Mathf.Max(a.y, b.y);
+		float num2 = Mathf.Min(a.y + a.height, b.y + b.height);
+		if (num1 >= x && num2 >= y)
+			return new Rect(x, y, num1 - x, num2 - y);
+		else
+			return new Rect();
+	}
+
+	public static float area(this Rect r){
+		return r.width * r.height;
+	}
+
 	public static JSONNode JsonVector3(this JSONNode n,Vector3 v){
 		JSONData x=new JSONData(v.x);
 		JSONData y=new JSONData(v.y);
@@ -67,6 +82,16 @@ public static class Extension
 		r.width=n["width"].AsFloat;
 		r.height=n["height"].AsFloat;
 		return r;
+	}
+
+	public static int toInt(float f){
+		if(f>0){
+			return (int)(f+.5f);
+		}
+		if(f<0){
+			return (int)(f-.5f);
+		}
+		return 0;
 	}
 
 }
