@@ -34,8 +34,8 @@ public static class Extension
 		Rect r=new Rect(x, y, num1 - x, num2 - y);
 		//Debug.Log(r);
 		drawRect(a,Color.blue);
-		drawRect(b,Color.green);
-		drawRect(r,Color.red);
+		drawRect(b,Color.red);
+		drawRect(r,Color.magenta);
 
 		if (num1 >= x && num2 >= y)
 			return new Rect(x, y, num1 - x, num2 - y);

@@ -2,21 +2,14 @@
 using System.Collections;
 
 public class DrawBrush : BaseBrush {
-	public int div;
+
 	public Terrain terrain;
-	[SerializeField]
-	BreakableObjectController breakController;
-	SpriteRenderer spriteRenderer;
-	Rect originRect;
-	int _div;
 	Vector2 posOffset;
 
 	protected override void Start ()
 	{
 		base.Start ();
-		spriteRenderer=GetComponent<SpriteRenderer> ();
-		Sprite _sprite = spriteRenderer.sprite;
-		originRect=_sprite.rect;
+
 		posOffset=new Vector2();
 	}
 
@@ -26,7 +19,16 @@ public class DrawBrush : BaseBrush {
 		if (IsActive) {
 		
 		}
+	}
 
+	protected override void mouseDown (int button)
+	{
+		base.mouseDown (button);
+	}
+
+	protected override void mouseUp (int button)
+	{
+		base.mouseUp (button);
 	}
 
 	protected override void updatePosition ()
@@ -49,63 +51,25 @@ public class DrawBrush : BaseBrush {
 		Vector2 up=new Vector2();
 		up.x=Extension.toInt(_p.x/unitSize.x);
 		up.y=Extension.toInt(_p.y/unitSize.y);
-
-//		Debug.Log("up: "+up+", u: "+unitSize.x);
-
 		p = new Vector3(up.x*unitSize.x,up.y*unitSize.y);
 		if(div==breakController.maxDivision){
 			p.x+=posOffset.x;
 			p.y-=posOffset.y;
 		}
-
 		return p;
-
 	}
 
-
-
-	void updateBrushSize(){
-		//Debug.Log(div);
-		if(div!=_div)
-		{
-			Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
-			Vector2 divGrid=new Vector2(Mathf.Pow(2,div),Mathf.Pow(2,div));
-			Rect rect = Voxel.culacRect(originRect,divGrid,new Vector2());
-			Texture2D tex2D = spriteRenderer.sprite.texture;
-			Vector2 pivot = new Vector2 (0.5f, 0.5f);
-			Sprite sprite = Sprite.Create (tex2D, rect, pivot);
-			spriteRenderer.sprite=sprite;
-			//GameObject.DestroyImmediate(_sprite,true);
-			ResetColliderSizeBySprite ();
-
-			float pixelsToUnits = CameraConfig.Singleten.PixelsToUnits;
-			Vector2 unitSize = new Vector2 (originRect.width * transform.localScale.x / divGrid.x, 
-			                                originRect.height * transform.localScale.y / divGrid.y) / pixelsToUnits;
-			posOffset=unitSize*.5f;
-
-		}
-		_div=div;
-	}
-
-
-	protected override void SetBrushSize (float sizeMulp)
-	{
-		if(sizeMulp<0&&!(div<=0)){
-			div--;
-		}
-		if(sizeMulp>0&&!(div>=breakController.maxDivision)){
-			div++;
-		}
-		updateBrushSize();
-	}
-
-	void ResetColliderSizeBySprite ()
-	{
+	protected override void updateBrushSize(float d){
+		base.updateBrushSize(d);
 		BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
-		Bounds b = spriteRenderer.sprite.bounds;
-		Vector3 bs = b.size;
-		Vector2 ls = new Vector2 (b.size.x, b.size.y);
-		collider2D.size = ls;
+		ResetColliderSizeBySprite (collider2D);
+		Vector2 divGrid=new Vector2(Mathf.Pow(2,d),Mathf.Pow(2,d));
+		float pixelsToUnits = CameraConfig.Singleten.PixelsToUnits;
+		Vector2 unitSize = new Vector2 (originRect.width * transform.localScale.x / divGrid.x, 
+			                                originRect.height * transform.localScale.y / divGrid.y) / pixelsToUnits;
+		posOffset=unitSize*.5f;
 	}
+
+
 
 }

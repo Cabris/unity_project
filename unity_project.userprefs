@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\resources\scripts\DamageSource.cs">
     <Files>
-      <File FileName="Assets\resources\scripts\DamageSource.cs" Line="75" Column="51" />
-      <File FileName="Assets\Resources\scripts\BreakableObject.cs" Line="32" Column="25" />
-      <File FileName="Assets\Resources\scripts\Extension.cs" Line="33" Column="3" />
+      <File FileName="Assets\resources\scripts\EditorScripts\EraseBrush.cs" Line="26" Column="28" />
+      <File FileName="Assets\resources\scripts\EditorScripts\DrawBrush.cs" Line="65" Column="42" />
+      <File FileName="Assets\resources\scripts\EditorScripts\BaseBrush.cs" Line="75" Column="42" />
+      <File FileName="Assets\resources\scripts\DamageSource.cs" Line="135" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

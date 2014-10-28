@@ -18,8 +18,27 @@ public class DamageSource : MonoBehaviour
 
 		bos=new List<BreakableObject>();
 	}
+
+	// Update is called once per frame
+	void Update ()
+	{
+		counter += Time.deltaTime;
+		if (counter >= updatePeriod || updatePeriod <= 0) {
+			counter = 0;
+			if (!isSleep)
+				Explose ();
+		}
+	}
 	
-	void CleanList ()
+	void FixedUpdate ()
+	{
+		CleanList ();
+		foreach (BreakableObject bo in bos) {
+			culacPower(bo);
+		}
+	}
+
+	public void CleanList ()
 	{
 		List<BreakableObject> tempBos = new List<BreakableObject> ();
 		foreach (BreakableObject bo in bos) {
@@ -28,25 +47,7 @@ public class DamageSource : MonoBehaviour
 		}
 		bos=tempBos;
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		CleanList ();	
-		counter += Time.deltaTime;
-		if (counter >= updatePeriod || updatePeriod <= 0) {
-			counter = 0;
-			if (!isSleep)
-				Explose ();
-		}
-		
-	}
-	
-	void FixedUpdate ()
-	{
-		
-	}
-	
+
 	public Vector2 culacPower (BreakableObject target)
 	{
 		//CircleCollider2D cCollider2D = GetComponent<CircleCollider2D> ();
@@ -65,14 +66,16 @@ public class DamageSource : MonoBehaviour
 		Vector2 vect = (targetPos-pos).normalized;
 
 		Rect targetRect = new Rect ();
-		Vector2 size=new Vector2(targetCollider.size.x*target.transform.localScale.x,targetCollider.size.y*target.transform.localScale.y);
+		Vector2 size=new Vector2(targetCollider.size.x*target.transform.lossyScale.x,
+		                         targetCollider.size.y*target.transform.lossyScale.y);
 		targetRect.center = targetPos-size/2;
 		targetRect.width = size.x;
 		targetRect.height = size.y;
 
 
 		Rect damageRect = new Rect ();
-		size=new Vector2(damageCollider.size.x*transform.localScale.x,damageCollider.size.y*transform.localScale.y);
+		size=new Vector2(damageCollider.size.x*transform.lossyScale.x,
+		                 damageCollider.size.y*transform.lossyScale.y);
 		damageRect.center = pos-size/2;
 		damageRect.width = size.x;
 		damageRect.height = size.y;
@@ -117,15 +120,21 @@ public class DamageSource : MonoBehaviour
 	void  OnTriggerEnter2D (Collider2D other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
-		if (bo != null && !bos.Contains (bo))
+		if (bo != null && !bos.Contains (bo)){
 			bos.Add (bo);
+			Debug.Log("add");
+		}
+		//CleanList ();
 	}
 	
 	void OnTriggerExit2D (Collider2D other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
-		if (bo != null)
+		if (bo != null){
 			bos.Remove (bo);
+			Debug.Log("remove");
+		}
+		//CleanList ();
 	}
 	
 }
