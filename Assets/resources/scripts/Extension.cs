@@ -25,14 +25,29 @@ public static class Extension
 	}
 
 	public static Rect intersection(Rect a,Rect b){
-		float x =  Mathf.Max(a.x, b.x);
-		float num1 = Mathf.Min(a.x + a.width, b.x + b.width);
-		float y = Mathf.Max(a.y, b.y);
-		float num2 = Mathf.Min(a.y + a.height, b.y + b.height);
+		float x =  Mathf.Max(a.xMin, b.xMin);
+		float num1 = Mathf.Min(a.xMax, b.xMax);
+		float y = Mathf.Max(a.yMin, b.yMin);
+		float num2 = Mathf.Min(a.yMax, b.yMax);
+
+//		Debug.Log("a: "+a+", b: "+b);
+		Rect r=new Rect(x, y, num1 - x, num2 - y);
+		//Debug.Log(r);
+		drawRect(a,Color.blue);
+		drawRect(b,Color.green);
+		drawRect(r,Color.red);
+
 		if (num1 >= x && num2 >= y)
 			return new Rect(x, y, num1 - x, num2 - y);
 		else
 			return new Rect();
+	}
+
+	static void drawRect(Rect r,Color c){
+		Debug.DrawLine(new Vector3(r.xMin,r.yMin,0),new Vector3(r.xMax,r.yMin,0), c);
+		Debug.DrawLine(new Vector3(r.xMin,r.yMin,0),new Vector3(r.xMin,r.yMax,0), c);
+		Debug.DrawLine(new Vector3(r.xMax,r.yMin,0),new Vector3(r.xMax,r.yMax,0), c);
+		Debug.DrawLine(new Vector3(r.xMin,r.yMax,0),new Vector3(r.xMax,r.yMax,0), c);
 	}
 
 	public static float area(this Rect r){
