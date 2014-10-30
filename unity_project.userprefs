@@ -3,9 +3,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\EditorScripts\DrawBrush.cs">
     <Files>
       <File FileName="Assets\Resources\scripts\EditorScripts\EraseBrush.cs" Line="12" Column="5" />
-      <File FileName="Assets\Resources\scripts\EditorScripts\DrawBrush.cs" Line="23" Column="1" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\DrawBrush.cs" Line="103" Column="20" />
       <File FileName="Assets\Resources\scripts\DamageSource.cs" Line="39" Column="3" />
-      <File FileName="Assets\Resources\scripts\EditorScripts\BaseBrush.cs" Line="44" Column="18" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\BaseBrush.cs" Line="35" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
