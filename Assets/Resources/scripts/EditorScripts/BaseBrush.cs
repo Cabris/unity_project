@@ -47,6 +47,7 @@ public class BaseBrush : MonoBehaviour {
 	protected virtual void updatePosition ()
 	{
 		Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		mousePosInWorld.z = 0;
 		transform.position = mousePosInWorld;
 	}
 	
@@ -74,13 +75,7 @@ public class BaseBrush : MonoBehaviour {
 		spriteRenderer.sprite=sprite;
 	}
 	
-	protected void ResetColliderSizeBySprite (BoxCollider2D collider2D)
-	{
-		Bounds b = spriteRenderer.sprite.bounds;
-		Vector3 bs = b.size;
-		Vector2 ls = new Vector2 (b.size.x, b.size.y);
-		collider2D.size = ls;
-	}
+
 	
 	public bool IsActive{ 
 		get;

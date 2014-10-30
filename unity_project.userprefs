@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\EditorScripts\DrawBrush.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\Extension.cs">
     <Files>
-      <File FileName="Assets\Resources\scripts\EditorScripts\EraseBrush.cs" Line="12" Column="5" />
-      <File FileName="Assets\Resources\scripts\EditorScripts\DrawBrush.cs" Line="103" Column="20" />
-      <File FileName="Assets\Resources\scripts\DamageSource.cs" Line="39" Column="3" />
-      <File FileName="Assets\Resources\scripts\EditorScripts\BaseBrush.cs" Line="35" Column="3" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\EraseBrush.cs" Line="24" Column="25" />
+      <File FileName="Assets\Resources\scripts\EditorScripts\BaseBrush.cs" Line="16" Column="2" />
+      <File FileName="Assets\Resources\scripts\CameraConfig.cs" Line="22" Column="69" />
+      <File FileName="Assets\Resources\scripts\Extension.cs" Line="21" Column="71" />
+      <File FileName="Assets\Resources\scripts\Voxel.cs" Line="8" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

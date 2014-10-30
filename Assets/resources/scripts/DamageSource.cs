@@ -50,19 +50,14 @@ public class DamageSource : MonoBehaviour
 
 	public Vector2 culacPower (BreakableObject target)
 	{
-		//CircleCollider2D cCollider2D = GetComponent<CircleCollider2D> ();
-		//float radius = cCollider2D.radius * transform.localScale.x;
-		//		LayerMask mask = bc.gameObject.layer;
-		//		RaycastHit2D[] hits = Extension.CircleScan (p, radius, mask, bc);
-
 		if (target == null){
 			Debug.LogWarning("null target");
 			return new Vector2();}
 		Vector2 targetPos = target.transform.position.ToVector2 ();
-		BoxCollider2D targetCollider = target.GetComponent<BoxCollider2D> ();
+		BoxCollider targetCollider = target.GetComponent<BoxCollider> ();
 		Vector2 pos = transform.position.ToVector2 ();
 
-		BoxCollider2D damageCollider = GetComponent<BoxCollider2D> ();
+		BoxCollider damageCollider = GetComponent<BoxCollider> ();
 		Vector2 vect = (targetPos-pos).normalized;
 
 		Rect targetRect = new Rect ();
@@ -90,21 +85,6 @@ public class DamageSource : MonoBehaviour
 		Vector2 power=-vect * factor * maxPower;
 		//Debug.Log ("pow: " + power);
 		return power;
-		
-//		if (hits.Length == 0)
-//			return new Vector2 ();
-//		Vector2 power = new Vector2 ();
-//		foreach (RaycastHit2D hit in hits) {
-//			//Debug.Log( hit.fraction);
-//			float t = 1 - hit.fraction;
-//			power += hit.normal * t;
-//		}
-//		if (bc.OverlapPoint (p))
-//			return new Vector2 (maxPower, maxPower);
-//		power.Normalize ();	
-//		float d = Vector2.Distance (boP, p);
-//		float factor = (radius * radius) / (d * d);
-//		return -power * factor * maxPower;
 	}
 		
 	public void Explose ()
@@ -117,22 +97,20 @@ public class DamageSource : MonoBehaviour
 		}
 	}
 	
-	void  OnTriggerEnter2D (Collider2D other)
+	void  OnTriggerEnter (Collider other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
 		if (bo != null && !bos.Contains (bo)){
 			bos.Add (bo);
-			Debug.Log("add");
 		}
 		//CleanList ();
 	}
 	
-	void OnTriggerExit2D (Collider2D other)
+	void OnTriggerExit (Collider other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
 		if (bo != null){
 			bos.Remove (bo);
-			Debug.Log("remove");
 		}
 		//CleanList ();
 	}

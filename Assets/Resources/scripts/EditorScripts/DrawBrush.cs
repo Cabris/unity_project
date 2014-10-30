@@ -10,7 +10,7 @@ public class DrawBrush : BaseBrush
 	[SerializeField]
 	bool isOverlay;
 	bool isMousePress;
-	[SerializeField]
+	//[SerializeField]
 	List<BreakableObject> bos;
 	
 	protected override void Start ()
@@ -78,8 +78,9 @@ public class DrawBrush : BaseBrush
 	protected override void updateBrushSize (float d)
 	{
 		base.updateBrushSize (d);
-		BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
-		ResetColliderSizeBySprite (collider2D);
+		BoxCollider collider = GetComponent<BoxCollider> ();
+		Bounds b= spriteRenderer.bounds;
+		Extension.ResetColliderSizeBySprite (b,collider);
 		Vector2 divGrid = new Vector2 (Mathf.Pow (2, d), Mathf.Pow (2, d));
 		float pixelsToUnits = CameraConfig.Singleten.PixelsToUnits;
 		Vector2 unitSize = new Vector2 (originRect.width * transform.localScale.x / divGrid.x, 
@@ -87,21 +88,21 @@ public class DrawBrush : BaseBrush
 		posOffset = unitSize * .5f;
 	}
 	
-	void  OnTriggerEnter2D (Collider2D other)
+	void  OnTriggerEnter (Collider other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
 		if (bo != null && !bos.Contains (bo)) {
 			bos.Add (bo);
-			Debug.Log("OnTriggerEnter2D: "+bo.name);
+			//Debug.Log("OnTriggerEnter: "+bo.name);
 		}
 	}
 	
-	void OnTriggerExit2D (Collider2D other)
+	void OnTriggerExit (Collider other)
 	{
 		BreakableObject bo = other.gameObject.GetComponent<BreakableObject> ();
 		if (bo != null) {
 			bos.Remove (bo);
-			Debug.Log("OnTriggerExit2D: "+bo.name);
+			//Debug.Log("OnTriggerExit: "+bo.name);
 		}
 	}
 	

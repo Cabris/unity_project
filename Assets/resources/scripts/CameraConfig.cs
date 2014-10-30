@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class CameraConfig : MonoBehaviour {
+	[SerializeField]
 	Camera mainCamera;
 	// Use this for initialization
 	[SerializeField]
@@ -11,7 +12,7 @@ public class CameraConfig : MonoBehaviour {
 	static CameraConfig config;
 
 	void Start () {
-		mainCamera=Camera.main;
+		//mainCamera=Camera.main;
 		mainCamera.orthographic=true;
 		config=this;
 	}

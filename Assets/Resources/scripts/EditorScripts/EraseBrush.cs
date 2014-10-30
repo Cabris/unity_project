@@ -22,8 +22,9 @@ public class EraseBrush : BaseBrush
 		protected override void updateBrushSize (float d)
 		{
 				base.updateBrushSize (d);
-				BoxCollider2D collider2D = damage.GetComponent<BoxCollider2D> ();
-				ResetColliderSizeBySprite (collider2D);
+				BoxCollider collider = damage.GetComponent<BoxCollider> ();
+		Bounds b= spriteRenderer.bounds;
+		Extension.ResetColliderSizeBySprite (b,collider);
 		}
 
 //	protected override void SetBrushSize (float sizeMulp)

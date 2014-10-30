@@ -5,14 +5,12 @@ using System.Collections.Generic;
 
 public class Voxel : MonoBehaviour
 {
+	float thickness=.02f;
 	public BreakableObjectController vControlor;
 	public int divisionCount = 0;//0~maxB
-	//[SerializeField]
 	bool destoryFlag = false;
 	[SerializeField]
 	float lifeTime;
-	[SerializeField]
-	Vector2 unitSize;
 	
 	// Use this for initialization
 	void Start ()
@@ -23,15 +21,10 @@ public class Voxel : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float dt = Time.deltaTime;
-		if (destoryFlag)
-			lifeTime -= dt;
-		if (lifeTime <= 0) {
-			GameObject.Destroy (gameObject);
-		}
-		unitSize = UnitSize;
 	}
-	
+
+
+
 	public Voxel[] Break (int gridX, int gridY)
 	{
 		List<Voxel> voxels = new List<Voxel> ();
@@ -42,7 +35,6 @@ public class Voxel : MonoBehaviour
 		Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
 		Rect parentRect = _sprite.rect;
 		if (gridX > 1 && gridY > 1 && divisionCount < vControlor.maxDivision) {
-			BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
 			Vector2 gridSize = new Vector2 (gridX, gridY);
 			for (int i=0; i<gridY; i++) {
 				for (int j=0; j<gridX; j++) {
@@ -69,8 +61,7 @@ public class Voxel : MonoBehaviour
 		Voxel voxel = CloneMe (sprite);
 		Transform t = voxel.transform;
 		t.position = pos;
-		BoxCollider2D collider2D = voxel.GetComponent<BoxCollider2D> ();
-		
+
 		t.parent = parent;
 		voxel.divisionCount = dc;
 		voxel.ResetColliderSizeBySprite ();
@@ -112,28 +103,37 @@ public class Voxel : MonoBehaviour
 	
 	public void ResetColliderSizeBySprite ()
 	{
-		BoxCollider2D collider2D = GetComponent<BoxCollider2D> ();
+		BoxCollider collider = GetComponent<BoxCollider> ();
 		SpriteRenderer sp = GetComponent<SpriteRenderer> ();
 		Bounds b = sp.sprite.bounds;
-		Vector3 bs = b.size;
-		Vector2 ls = new Vector2 (b.size.x, b.size.y);
-		collider2D.size = ls;
+		Extension.ResetColliderSizeBySprite (b, collider);
 	}
 	
 	public void Disintegration ()
 	{
 		destoryFlag = true;
-		rigidbody2D.isKinematic = false;
+		Vector3 scale = transform.localScale;
+		scale *= .75f;
+		transform.localScale = scale;
+		gameObject.name="RUBBLE";
+		rigidbody.isKinematic = false;
 		gameObject.layer = LayerMask.NameToLayer ("rubble");
-		
-		Vector2 f = new Vector2 ();
+		Vector3 f = new Vector3 ();
 		//Random r=new Random();
 		Random.seed = Time.frameCount;
 		f.x = Random.Range (-5, 5);
 		f.y = Random.Range (-1, 5);
-		rigidbody2D.AddForce (f * 0.05f);
+		f.z = Random.Range (-5, 5);
+		rigidbody.AddForce (f * 0.05f);
+		rigidbody.AddTorque (f*0.01f);
+		StartCoroutine (doDestory ());
 	}
-	
+
+	IEnumerator doDestory(){
+		yield return new WaitForSeconds (lifeTime);
+		GameObject.Destroy (gameObject);
+	}
+
 	public Vector2 UnitSize {
 		get {
 			Vector2 size = new Vector2 ();

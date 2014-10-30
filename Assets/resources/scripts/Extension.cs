@@ -5,9 +5,17 @@ using SimpleJSON;
 
 public static class Extension
 {
+
 	//private static string TYPE_VECTOR3="Vector3";
 	public static Vector2 ToVector2(this Vector3 p){
 		return new Vector2(p.x,p.y);
+	}
+
+	public static void ResetColliderSizeBySprite (Bounds b,BoxCollider collider)
+	{
+		Vector3 bs = b.size;
+		Vector3 ls = new Vector3 (b.size.x, b.size.y,.02f);
+		collider.size = ls;
 	}
 
 	public static RaycastHit2D[] CircleScan(Vector2 origin,float distance ,LayerMask layerMask ,Collider2D collider){
