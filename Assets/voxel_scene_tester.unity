@@ -413,7 +413,8 @@ GameObject:
   - 114: {fileID: 718438082}
   - 212: {fileID: 718438084}
   - 61: {fileID: 718438083}
-  m_Layer: 0
+  - 50: {fileID: 718438085}
+  m_Layer: 11
   m_Name: DrawBrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,6 +446,8 @@ MonoBehaviour:
   div: 0
   breakController: {fileID: 1559156612}
   terrain: {fileID: 0}
+  isOverlay: 0
+  bos: []
 --- !u!61 &718438083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -468,7 +471,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 19fb2eefdd5dffc40926407f1e877f90, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -479,6 +482,21 @@ SpriteRenderer:
   m_SortingLayerID: 2156744641
   m_Sprite: {fileID: 21300000, guid: 0f4c0ef77ae85014da8ae55e3095724d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!50 &718438085
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718438080}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &763584866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1654,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029025006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.442396343, y: 0, z: 0}
+  m_LocalPosition: {x: -.959880114, y: .480000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2056470367}
@@ -1713,11 +1731,11 @@ MonoBehaviour:
     e00: 400
     e01: 0
     e02: 0
-    e03: .442396343
+    e03: .959880114
     e10: 0
     e11: 400
     e12: 0
-    e13: 0
+    e13: -.480000019
     e20: 0
     e21: 0
     e22: 400

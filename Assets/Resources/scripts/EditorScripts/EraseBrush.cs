@@ -3,28 +3,28 @@ using System.Collections;
 
 public class EraseBrush : BaseBrush
 {
-	DamageSource damage;
+		DamageSource damage;
 
-	// Use this for initialization
-	protected override void Start ()
-	{
-		base.Start ();
-		damage = GetComponentInChildren<DamageSource> ();
-	}
+		// Use this for initialization
+		protected override void Start ()
+		{
+				base.Start ();
+				damage = GetComponentInChildren<DamageSource> ();
+		}
 	
-	// Update is called once per frame
-	protected override void Update ()
-	{
-		base.Update ();
-		damage.isSleep=!IsActive;
-	}
+		// Update is called once per frame
+		protected override void Update ()
+		{
+				base.Update ();
+				damage.isSleep = !IsActive;
+		}
 
-	protected override void updateBrushSize (float d)
-	{
-		base.updateBrushSize (d);
-		BoxCollider2D collider2D = damage.GetComponent<BoxCollider2D> ();
-		ResetColliderSizeBySprite (collider2D);
-	}
+		protected override void updateBrushSize (float d)
+		{
+				base.updateBrushSize (d);
+				BoxCollider2D collider2D = damage.GetComponent<BoxCollider2D> ();
+				ResetColliderSizeBySprite (collider2D);
+		}
 
 //	protected override void SetBrushSize (float sizeMulp)
 //	{

@@ -51,6 +51,8 @@ public class BaseBrush : MonoBehaviour {
 	}
 	
 	void SetBrushSize(float sizeMulp){
+		if (sizeMulp == 0)
+						return;
 		if(sizeMulp<0&&!(div<=0)){
 			div--;
 		}
