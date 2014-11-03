@@ -13,8 +13,9 @@ public static class Extension
 
 	public static void ResetColliderSizeBySprite (Bounds b,BoxCollider collider)
 	{
+		float safeValue=0.002f;
 		Vector3 bs = b.size;
-		Vector3 ls = new Vector3 (b.size.x, b.size.y,.02f);
+		Vector3 ls = new Vector3 (b.size.x-safeValue, b.size.y-safeValue,0.02f);
 		collider.size = ls;
 	}
 
@@ -37,10 +38,8 @@ public static class Extension
 		float num1 = Mathf.Min(a.xMax, b.xMax);
 		float y = Mathf.Max(a.yMin, b.yMin);
 		float num2 = Mathf.Min(a.yMax, b.yMax);
-
-//		Debug.Log("a: "+a+", b: "+b);
+		
 		Rect r=new Rect(x, y, num1 - x, num2 - y);
-		//Debug.Log(r);
 		drawRect(a,Color.blue);
 		drawRect(b,Color.red);
 		drawRect(r,Color.magenta);

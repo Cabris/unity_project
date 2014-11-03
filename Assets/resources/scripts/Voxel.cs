@@ -51,7 +51,7 @@ public class Voxel : MonoBehaviour
 			voxels.Add (this);
 		return voxels.ToArray ();
 	}
-	
+
 	public Voxel CloneMe (Rect rect, Vector3 pos, Transform parent, int dc)
 	{
 		Sprite _sprite = this.GetComponent<SpriteRenderer> ().sprite;
@@ -61,7 +61,6 @@ public class Voxel : MonoBehaviour
 		Voxel voxel = CloneMe (sprite);
 		Transform t = voxel.transform;
 		t.position = pos;
-
 		t.parent = parent;
 		voxel.divisionCount = dc;
 		voxel.ResetColliderSizeBySprite ();

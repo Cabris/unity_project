@@ -14,7 +14,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
   m_Layer: 10
-  m_Name: Voxel
+  m_Name: voxel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,10 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d9ac92c93fbf4489e722bbcdfc2864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vControlor: {fileID: 0}
+  vControlor: {fileID: 11400000, guid: 93ff719f4e79d6c4c8874faafc6649be, type: 2}
   divisionCount: 0
   lifeTime: 2
-  unitSize: {x: 0, y: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,14 +4,16 @@ using System.Collections.Generic;
 
 public class DrawBrush : BaseBrush
 {
-	
 	public Terrain terrain;
 	Vector2 posOffset;
 	[SerializeField]
 	bool isOverlay;
 	bool isMousePress;
-	//[SerializeField]
+	[SerializeField]
 	List<BreakableObject> bos;
+	[SerializeField]
+	GameObject voxelPrefab; 
+	Vector3 newPos;
 	
 	protected override void Start ()
 	{
@@ -30,6 +32,7 @@ public class DrawBrush : BaseBrush
 			spriteRenderer.color = Color.red;
 		else
 			spriteRenderer.color = Color.white;
+
 	}
 	
 	void FixedUpdate ()
@@ -45,6 +48,14 @@ public class DrawBrush : BaseBrush
 	protected override void mouseUp (int button)
 	{
 		isMousePress = false;
+		if(!isOverlay&&IsActive){
+		Voxel prototype=voxelPrefab.GetComponent<Voxel>();
+		Rect r=spriteRenderer.sprite.rect;
+		Vector3 pos=transform.position;
+		Voxel v=prototype.CloneMe(r,pos,terrain.transform,Extension.toInt(div));
+		v.transform.position=newPos;
+			Debug.Log(v.transform.position+", "+newPos);
+		}
 	}
 	
 	protected override void updatePosition ()
@@ -53,7 +64,7 @@ public class DrawBrush : BaseBrush
 		Vector2 divGrid = new Vector2 (Mathf.Pow (2, td), Mathf.Pow (2, td));
 		Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		transform.position = mousePosInWorld;
-		Vector3 newPos = culacPos (transform, originRect, divGrid, new Vector2 ());
+		newPos = culacPos (transform, originRect, divGrid, new Vector2 ());
 		transform.position = newPos;
 	}
 	

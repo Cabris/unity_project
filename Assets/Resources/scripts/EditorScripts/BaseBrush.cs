@@ -10,9 +10,11 @@ public class BaseBrush : MonoBehaviour {
 	protected BreakableObjectController breakController;
 	protected SpriteRenderer spriteRenderer;
 	protected Rect originRect;
-
 	Vector3 max=new Vector3(1,1,1);
 	Vector3 min=new Vector3(0.05f,0.05f,0.05f);
+
+	public bool UpdatePosition;
+	public bool UpdateBrushSize;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -21,6 +23,8 @@ public class BaseBrush : MonoBehaviour {
 		spriteRenderer=GetComponent<SpriteRenderer> ();
 		Sprite _sprite = spriteRenderer.sprite;
 		originRect=_sprite.rect;
+		UpdatePosition=true;
+		UpdateBrushSize=true;
 	}
 	
 	// Update is called once per frame
@@ -33,6 +37,7 @@ public class BaseBrush : MonoBehaviour {
 		
 		float wheelValue=Input.GetAxis("Mouse ScrollWheel");
 		SetBrushSize(wheelValue);
+		if(UpdatePosition)
 		updatePosition ();	
 	}
 	
@@ -52,7 +57,7 @@ public class BaseBrush : MonoBehaviour {
 	}
 	
 	void SetBrushSize(float sizeMulp){
-		if (sizeMulp == 0)
+		if (sizeMulp == 0||!UpdateBrushSize)
 						return;
 		if(sizeMulp<0&&!(div<=0)){
 			div--;
@@ -75,7 +80,10 @@ public class BaseBrush : MonoBehaviour {
 		spriteRenderer.sprite=sprite;
 	}
 	
-
+	void OnDisable() {
+		print("script was removed");
+		IsActive=false;
+	}
 	
 	public bool IsActive{ 
 		get;
