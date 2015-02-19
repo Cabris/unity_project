@@ -6,7 +6,6 @@ public class Wall : MonoBehaviour
 {
 	
 	public delegate void onWallTouchEvent (Vector3 pos);
-
 	public onWallTouchEvent OnWallDown;
 	Camera cam;
 	// Use this for initialization

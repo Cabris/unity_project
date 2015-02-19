@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\resources\scripts\EditorScripts\DrawBrush.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\resources\scripts\Voxel\BreakableObjectController.cs">
     <Files>
-      <File FileName="Assets\resources\scripts\EditorScripts\DrawBrush.cs" Line="29" Column="12" />
-      <File FileName="Assets\resources\scripts\Voxel.cs" Line="31" Column="26" />
-      <File FileName="Assets\resources\scripts\EditorScripts\BaseBrush.cs" Line="31" Column="2" />
-      <File FileName="Assets\resources\scripts\EditorScripts\TerrainEditor.cs" Line="37" Column="39" />
+      <File FileName="Assets\resources\scripts\Hand.cs" Line="43" Column="14" />
+      <File FileName="Assets\resources\scripts\Voxel\BreakableObjectController.cs" Line="70" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

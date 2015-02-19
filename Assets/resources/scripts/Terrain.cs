@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Terrain : MonoBehaviour {
 
-	Voxel[] voxels;
+	public List<Voxel> voxels;
 
 	// Use this for initialization
 	void Start () {
-	
+		voxels=new List<Voxel>();
 	}
 	
 	// Update is called once per frame
@@ -16,9 +17,15 @@ public class Terrain : MonoBehaviour {
 	}
 
 	void updateVoxels(){
-		voxels = GetComponentsInChildren<Voxel> ();
+		//voxels = GetComponentsInChildren<Voxel> ();
 	}
 
-	public void AddVoxel(Voxel v){}
+	public void AddVoxel(Voxel v){
+		voxels.Add(v);
+	}
+
+	public void RemoveVoxel(Voxel v){
+		voxels.Remove(v);
+	}
 
 }
