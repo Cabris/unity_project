@@ -15,11 +15,17 @@ public class CameraConfig : MonoBehaviour {
 		//mainCamera=Camera.main;
 		mainCamera.orthographic=true;
 		config=this;
+		mainCamera.orthographicSize=(gameTargetHeight / 2) / pixelsToUnits;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		mainCamera.orthographicSize=(gameTargetHeight / 2) / pixelsToUnits;
+		if(Input.GetKeyDown(KeyCode.R))
+			mainCamera.orthographicSize=(gameTargetHeight / 2) / pixelsToUnits;
+		if(Input.GetKey(KeyCode.KeypadPlus))
+			mainCamera.orthographicSize-=.1f;
+		if(Input.GetKey(KeyCode.KeypadMinus))
+			mainCamera.orthographicSize+=.1f;
 	}
 
 	public static CameraConfig Singleten{

@@ -6,18 +6,19 @@ using System.Collections.Generic;
 public class Voxel : MonoBehaviour
 {
 	float thickness=.02f;
-	public BreakableObjectController vControlor;
 	public int divisionCount = 0;//0~maxB
 	bool destoryFlag = false;
 	[SerializeField]
 	float lifeTime;
-	[SerializeField]
+	//[SerializeField]
 	Terrain terrain;
-	
+	BreakableObjectController vControlor;
+
 	// Use this for initialization
 	void Start ()
 	{
-
+		vControlor=GameObject.Find("Scene/Terrain/BOController").GetComponent<BreakableObjectController>();
+		terrain=GameObject.Find("Scene/Terrain").GetComponent<Terrain>();
 	}
 	
 	// Update is called once per frame
@@ -136,8 +137,11 @@ public class Voxel : MonoBehaviour
 
 	IEnumerator doDestory(){
 		yield return new WaitForSeconds (lifeTime);
-		if(terrain!=null)
-			terrain.RemoveVoxel(this);
+		if(terrain==null){
+			//throw new UnityException("terrain==null");
+			Debug.LogException(new UnityException("terrain==null"));
+		}
+		terrain.RemoveVoxel(this);
 		GameObject.Destroy (gameObject);
 	}
 

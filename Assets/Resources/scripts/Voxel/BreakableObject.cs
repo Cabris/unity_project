@@ -5,7 +5,7 @@ public class BreakableObject : MonoBehaviour {
 
 	public float durableValue;
 	//public float hardness;
-	public Voxel voxel;
+	Voxel voxel;
 	// Use this for initialization
 	void Start () {
 		voxel=GetComponent<Voxel>();

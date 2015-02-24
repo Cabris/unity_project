@@ -24,20 +24,21 @@ public class DrawBrush : BaseBrush
 		posOffset = new Vector2 ();
 	}
 	
-	protected override void Update ()
+	protected override void myUpdate ()
 	{
-		base.Update ();
-		isOverlay = bos.Count > 0;
+		base.myUpdate ();
 		if (isOverlay)
 			spriteRenderer.color = Color.red;
 		else
 			spriteRenderer.color = Color.white;
-
-	}
-	
-	void FixedUpdate ()
-	{
-		
+		if(!isOverlay&&IsActive&&isMousePress){
+			Voxel prototype=voxelPrefab.GetComponent<Voxel>();
+			Rect r=spriteRenderer.sprite.rect;
+			Vector3 pos=transform.position;
+			Voxel v=prototype.CloneMe(r,pos,terrain.transform,Extension.toInt(div));
+			v.transform.position=newPos;
+			Debug.Log(v.transform.position+", "+newPos);
+		}
 	}
 	
 	protected override void mouseDown (int button)
@@ -48,14 +49,6 @@ public class DrawBrush : BaseBrush
 	protected override void mouseUp (int button)
 	{
 		isMousePress = false;
-		if(!isOverlay&&IsActive){
-		Voxel prototype=voxelPrefab.GetComponent<Voxel>();
-		Rect r=spriteRenderer.sprite.rect;
-		Vector3 pos=transform.position;
-		Voxel v=prototype.CloneMe(r,pos,terrain.transform,Extension.toInt(div));
-		v.transform.position=newPos;
-			Debug.Log(v.transform.position+", "+newPos);
-		}
 	}
 	
 	protected override void updatePosition ()
@@ -106,6 +99,7 @@ public class DrawBrush : BaseBrush
 			bos.Add (bo);
 			//Debug.Log("OnTriggerEnter: "+bo.name);
 		}
+		isOverlay = bos.Count > 0;
 	}
 	
 	void OnTriggerExit (Collider other)
@@ -115,6 +109,7 @@ public class DrawBrush : BaseBrush
 			bos.Remove (bo);
 			//Debug.Log("OnTriggerExit: "+bo.name);
 		}
+		isOverlay = bos.Count > 0;
 	}
 	
 	

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Hand : MonoBehaviour {
@@ -8,98 +8,98 @@ public class Hand : MonoBehaviour {
 	float spring;
 	Vector3 iniPos;
 	int fingerId;
+	float maxDis=Mathf.Infinity;
 	// Use this for initialization
 	void Start () {
 		isFix=false;
 		isTouch=false;
 		springJoint=GetComponent<SpringJoint>();
 		spring=springJoint.spring;
-		OnTouch.OnTouchEvent+=onTouch;
+		GameObject.Find("Scene").GetComponent<TouchHanlder>().OnTouchEvent+=onTouch;
+	}
+
+	void OnDestroy() {
+		GameObject.Find("Scene").GetComponent<TouchHanlder>().OnTouchEvent-=onTouch;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		rigidbody.isKinematic=isFix;
-		//if(ray!=null)
-//		if(isTouch)
-//			OnDrag();
+		rigidbody.isKinematic=isFix||isTouch;
 		Debug.DrawRay(ray.origin,ray.direction);
+//		if(isTouch)
+//			springJoint.spring=0;
+//		else
+//			springJoint.spring=10;
 	}
 	
-	void OnDown(Touch t){
-		iniPos=transform.position;
-		//Debug.Log(name+" OnMouseDown");
+	void OnDown(MyTouch t){
 		isTouch=true;
+		//Debug.Log(name+" OnMouseDown");
 		//springJoint.spring=0;
+		if(!isFix)
+			iniPos=transform.position;
 	}
 	
-	void OnUp(Touch t){
+	void OnUp(MyTouch t){
 		//Debug.Log(name+" OnMouseUp");
 		isTouch=false;
-		Vector3 dir=new Vector3(t.deltaPosition.x,t.deltaPosition.y,0);
+		Vector3 dir;
 		dir=transform.position-iniPos;
 		Debug.Log(dir.magnitude);
-		if(dir.magnitude>.1f){
-			if(!isFix)
+		if(Vector3.Distance(transform.position,iniPos)>1f&&!isFix){
+			//if(!isFix)
 				Slide(dir);
 			Debug.Log("slide");
 		}
-		else{
+		else if(isFix){
 			Debug.Log("click");
 			isFix=false;
 		}
+		//else 
 	}
 	
-	void OnDrag(Touch t){
+	void OnDrag(MyTouch t){
 		if(isTouch&&!isFix){
 			Vector3 pos=new Vector3(t.position.x,t.position.y,0);
 			Vector3 worldPos= Camera.main.ScreenToWorldPoint(pos);
 			Vector3 newPos=new Vector3(worldPos.x,worldPos.y,transform.position.z);
-			transform.position=newPos;
+			if(Vector3.Distance(newPos,iniPos)<=maxDis)
+				transform.position=newPos;
+//			else{
+//				Vector3 v=(newPos-iniPos).normalized;
+//				Vector3 p=iniPos+v*maxDis;
+//				p=Vector3.zero;
+//				transform.position=p;
+//			}
 			//springJoint.spring=0;
 		}
-		//else
-		//	springJoint.spring=spring;
 	}
 	
-	//#if UNITY_ANDROID
 
-//	void OnMouseDown(int fId){
-//		fingerId=fId;
-//		OnDown();
-//	}
-//	
-//	void OnMouseUp(int fId){
-//		OnUp();
-//	}
-//	
-//	void OnMouseDrag(int fId){
-//		if(fId==fingerId)
-//			OnDrag();
-//	}
-//	#endif
 	
 	Ray ray;
 	void Slide(Vector3 v){
 		Debug.Log("v:"+v);
 		RaycastHit hit;
-		int layerMask=1<<10;
+		int layerMask=1<<LayerMask.NameToLayer("breakable");
 		ray=new Ray(iniPos,v.normalized);
-		if(Physics.Raycast(ray,out hit,Mathf.Infinity,layerMask)){
+		if(Physics.Raycast(ray,out hit,maxDis,layerMask)){
 			Debug.Log("hit: "+hit.point);
-			transform.position=hit.point;
+			Vector3 pos=new Vector3(hit.point.x,hit.point.y,transform.position.z);
+			transform.position=pos;
 			isFix=true;
 		}else{
-			transform.position=iniPos;
+			transform.position=Vector3.zero;
 		}
 	}
 	
-	void onTouch(Touch t){
-		if(t.phase.Equals(TouchPhase.Began)){
-			Ray ray = Camera.main.ScreenPointToRay(t.position);
-			RaycastHit hit = new RaycastHit();
-			if (Physics.Raycast(ray, out hit)) {
-				if(hit.collider.gameObject==gameObject){
+	void onTouch(MyTouch t){
+		
+		Ray ray = Camera.main.ScreenPointToRay(t.position);
+		RaycastHit hit = new RaycastHit();
+		if (Physics.Raycast(ray, out hit)) {
+			if(hit.collider.gameObject==gameObject){
+				if(t.phase.Equals(TouchPhase.Began)){
 					fingerId=t.fingerId;
 					OnDown(t);
 				}

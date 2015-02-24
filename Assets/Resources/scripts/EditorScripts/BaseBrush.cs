@@ -12,7 +12,7 @@ public class BaseBrush : MonoBehaviour {
 	protected Rect originRect;
 	Vector3 max=new Vector3(1,1,1);
 	Vector3 min=new Vector3(0.05f,0.05f,0.05f);
-
+	public TerrainEditor editor;
 	public bool UpdatePosition;
 	public bool UpdateBrushSize;
 
@@ -26,10 +26,25 @@ public class BaseBrush : MonoBehaviour {
 		UpdatePosition=true;
 		UpdateBrushSize=true;
 	}
-	
+
 	// Update is called once per frame
-	protected virtual void Update ()
+	protected void Update ()
 	{
+		bool atUi=false;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit = new RaycastHit();
+		if (Physics.Raycast(ray, out hit)) {
+			if(hit.collider.tag=="ui area")
+				atUi=true;
+		}
+		if(!atUi&&!editor.isPlaying)
+			myUpdate();
+		if(atUi)
+			transform.Translate(new Vector3(99999,99999,0));
+	}
+
+	protected virtual void myUpdate (){
+
 		if (Input.GetMouseButtonDown(0))
 			mouseDown(0);
 		if(Input.GetMouseButtonUp(0))
@@ -37,8 +52,10 @@ public class BaseBrush : MonoBehaviour {
 		
 		float wheelValue=Input.GetAxis("Mouse ScrollWheel");
 		SetBrushSize(wheelValue);
+	
 		if(UpdatePosition)
-		updatePosition ();	
+			updatePosition ();	
+
 	}
 	
 	protected virtual void mouseDown(int button){

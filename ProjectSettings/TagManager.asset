@@ -7,6 +7,9 @@ TagManager:
   - save
   - load
   - terrain
+  - ui area
+  - 
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   User Layer 12: rubble
   User Layer 13: brush
   User Layer 14: hand
-  User Layer 15: 
+  User Layer 15: ui
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 

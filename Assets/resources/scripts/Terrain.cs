@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class Terrain : MonoBehaviour {
 
-	public List<Voxel> voxels;
+	HashSet<Voxel> voxels;
 
 	// Use this for initialization
 	void Start () {
-		voxels=new List<Voxel>();
+		voxels=new HashSet<Voxel>();
 	}
 	
 	// Update is called once per frame

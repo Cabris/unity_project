@@ -26,7 +26,7 @@ public class BreakableObjectController : MonoBehaviour
 
 		//voxelPrototype=Instantiate(Resources.Load("voxel")) as GameObject;
 		//voxelPrototype.transform.parent=terrain.transform;
-		voxelPrototype.GetComponent<Voxel>().vControlor=this;
+		//voxelPrototype.GetComponent<Voxel>().vControlor=this;
 		voxelPrototype.GetComponent<Voxel>().ResetColliderSizeBySprite();
 		//return prototype;
 	}
